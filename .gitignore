@@ -9,6 +9,6 @@
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
-xcuserdata
+# xcuserdata
 .DS_Store
 

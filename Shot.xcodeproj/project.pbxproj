@@ -19,8 +19,6 @@
 		07062B1F19FBB1810022983B /* sword1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1D19FBB1810022983B /* sword1.png */; };
 		07062B2119FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
 		07062B2219FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
-		071DE00119FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00019FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif */; };
-		071DE00219FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00019FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif */; };
 		071DE00419FEB38E0097DB51 /* ddd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* ddd.m4a */; };
 		071DE00519FEB38E0097DB51 /* ddd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* ddd.m4a */; };
 		071DE00719FEB49D0097DB51 /* efg.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00619FEB49D0097DB51 /* efg.m4a */; };
@@ -43,10 +41,6 @@
 		073B664119FAB6D000C09008 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 073B663D19FAB6D000C09008 /* spark.png */; };
 		073B664319FACB0A00C09008 /* spark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B664219FACB0A00C09008 /* spark2.sks */; };
 		073B664419FACB0A00C09008 /* spark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B664219FACB0A00C09008 /* spark2.sks */; };
-		074530C31A12968700F249EC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C11A12968700F249EC /* MyParticle.sks */; };
-		074530C41A12968700F249EC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C11A12968700F249EC /* MyParticle.sks */; };
-		074530CB1A12994A00F249EC /* MyParticle3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CA1A12994A00F249EC /* MyParticle3.sks */; };
-		074530CC1A12994A00F249EC /* MyParticle3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CA1A12994A00F249EC /* MyParticle3.sks */; };
 		074530CE1A12996400F249EC /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CD1A12996400F249EC /* spark.sks */; };
 		074530CF1A12996400F249EC /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CD1A12996400F249EC /* spark.sks */; };
 		077043E91A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
@@ -116,7 +110,6 @@
 		07062B1A19FBB1720022983B /* chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chest.png; sourceTree = "<group>"; };
 		07062B1D19FBB1810022983B /* sword1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword1.png; sourceTree = "<group>"; };
 		07062B2019FBB1910022983B /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bat.png; sourceTree = "<group>"; };
-		071DE00019FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "プロジェクト2 - 2014_10_28 1.57.aif"; sourceTree = "<group>"; };
 		071DE00319FEB38E0097DB51 /* ddd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ddd.m4a; sourceTree = "<group>"; };
 		071DE00619FEB49D0097DB51 /* efg.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = efg.m4a; sourceTree = "<group>"; };
 		071DE00919FEB5710097DB51 /* asd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = asd.m4a; sourceTree = "<group>"; };
@@ -128,8 +121,6 @@
 		073B663C19FAB6D000C09008 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		073B663D19FAB6D000C09008 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		073B664219FACB0A00C09008 /* spark2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark2.sks; sourceTree = "<group>"; };
-		074530C11A12968700F249EC /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
-		074530CA1A12994A00F249EC /* MyParticle3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle3.sks; sourceTree = "<group>"; };
 		074530CD1A12996400F249EC /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		077043EB1A00F2280097B108 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
@@ -229,8 +220,6 @@
 				073B663619FA949200C09008 /* FirstScene.swift */,
 				073B664219FACB0A00C09008 /* spark2.sks */,
 				073B663C19FAB6D000C09008 /* fire.sks */,
-				074530C11A12968700F249EC /* MyParticle.sks */,
-				074530CA1A12994A00F249EC /* MyParticle3.sks */,
 				074530CD1A12996400F249EC /* spark.sks */,
 				073B663D19FAB6D000C09008 /* spark.png */,
 				073B663919FA958B00C09008 /* SecondScene.swift */,
@@ -288,7 +277,6 @@
 				07BFCE3B19FB778D00B0342A /* wood.png */,
 				07BFCE2F19FB5EEE00B0342A /* mosamosa.ttf */,
 				07062B1D19FBB1810022983B /* sword1.png */,
-				071DE00019FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif */,
 				07062B2019FBB1910022983B /* bat.png */,
 				07B3617C19FD5B7300FD332E /* hommage.mp3 */,
 				071DE00319FEB38E0097DB51 /* ddd.m4a */,
@@ -412,7 +400,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074530C31A12968700F249EC /* MyParticle.sks in Resources */,
 				072245761A13CF3B00848443 /* MyScene.sks in Resources */,
 				07062B1E19FBB1810022983B /* sword1.png in Resources */,
 				070325391A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
@@ -426,7 +413,6 @@
 				071DE01319FEC25D0097DB51 /* zed.m4r in Resources */,
 				073B663E19FAB6D000C09008 /* fire.sks in Resources */,
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
-				071DE00119FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif in Resources */,
 				07BFCE3C19FB778D00B0342A /* wood.png in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
 				0703253C1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
@@ -438,7 +424,6 @@
 				078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				073B664019FAB6D000C09008 /* spark.png in Resources */,
 				07B7344E19F970B8006C8205 /* clotharmor.png in Resources */,
-				074530CB1A12994A00F249EC /* MyParticle3.sks in Resources */,
 				071DE00D19FEB81C0097DB51 /* rrr.m4a in Resources */,
 				07B7344B19F93E43006C8205 /* sword.png in Resources */,
 				077043F21A00F2B20097B108 /* 3.m4a in Resources */,
@@ -472,8 +457,6 @@
 				077043F31A00F2B20097B108 /* 3.m4a in Resources */,
 				07AE54EE19FD614F00E9824B /* test.mp3 in Resources */,
 				074530CF1A12996400F249EC /* spark.sks in Resources */,
-				074530C41A12968700F249EC /* MyParticle.sks in Resources */,
-				074530CC1A12994A00F249EC /* MyParticle3.sks in Resources */,
 				07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */,
 				07B7343E19F93A43006C8205 /* Images.xcassets in Resources */,
 				07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */,
@@ -488,7 +471,6 @@
 				077043F01A00F2550097B108 /* 2.m4a in Resources */,
 				071DE00819FEB49D0097DB51 /* efg.m4a in Resources */,
 				07062B1C19FBB1720022983B /* chest.png in Resources */,
-				071DE00219FEB2810097DB51 /* プロジェクト2 - 2014_10_28 1.57.aif in Resources */,
 				072245771A13CF3B00848443 /* MyScene.sks in Resources */,
 				073B663F19FAB6D000C09008 /* fire.sks in Resources */,
 			);
