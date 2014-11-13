@@ -104,6 +104,7 @@ class PlayScene: SKScene {
     var _lastTime:CFTimeInterval = 0
     var lastUpdateTime:CFTimeInterval = 0
     
+    // MARK: 画面更新(update)
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
@@ -118,6 +119,7 @@ class PlayScene: SKScene {
             // SKShapeNodeの場合はこちら
             if CGRectIntersectsRect(node.frame, _player!.frame) {
                 (node as SKShapeNode).fillColor=SKColor.redColor()
+                self.zan++;
             }
 
             
@@ -261,7 +263,9 @@ class PlayScene: SKScene {
     var sound:AVAudioPlayer? = nil
     var player:SKShapeNode? = nil
     var score = 0
+    var zan = 0
     
+    // MARK: 初期化
     func createSceneContent() {
         
         self.backgroundColor = UIColor.whiteColor()
@@ -287,6 +291,17 @@ class PlayScene: SKScene {
         _scoreNode.horizontalAlignmentMode = .Right
         _scoreNode.zPosition=1000
         addChild(_scoreNode)
+        
+        // zan
+        let _zanNode = SKLabelNode(text: "0.0%")
+        _zanNode.name="zan"
+        _zanNode.position = CGPointMake(CGRectGetMaxX(frame)-50,  CGRectGetMaxY(self.frame)-50)
+        _zanNode.fontColor=UIColor.blackColor()
+        _zanNode.verticalAlignmentMode = .Bottom
+        _zanNode.horizontalAlignmentMode = .Right
+        _zanNode.zPosition=1000
+        addChild(_zanNode)
+
         
         let _sparkPath = NSBundle.mainBundle().pathForResource("spark", ofType: "sks")!
         self.spark = NSKeyedUnarchiver.unarchiveObjectWithFile(_sparkPath) as SKEmitterNode?
@@ -487,7 +502,11 @@ class PlayScene: SKScene {
     func refreshScore() {
         let _scoreNode = childNodeWithName("score")! as SKLabelNode
         _scoreNode.text = String(self.score)
-
+        
+        let _zanNode = childNodeWithName("zan")! as SKLabelNode
+        _zanNode.text = String(format: "%.1f%%", Float(self.zan) / 10)
+        
+        NSLog("zan %d %.1f", zan, Float(self.zan) * 0.1)
         // 逆スラッシュは option + ¥
         println("score \(self.score)")
     
