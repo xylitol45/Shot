@@ -45,8 +45,6 @@
 		073B664419FACB0A00C09008 /* spark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B664219FACB0A00C09008 /* spark2.sks */; };
 		074530C31A12968700F249EC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C11A12968700F249EC /* MyParticle.sks */; };
 		074530C41A12968700F249EC /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C11A12968700F249EC /* MyParticle.sks */; };
-		074530C81A1297F900F249EC /* MyParticle2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C71A1297F900F249EC /* MyParticle2.sks */; };
-		074530C91A1297F900F249EC /* MyParticle2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530C71A1297F900F249EC /* MyParticle2.sks */; };
 		074530CB1A12994A00F249EC /* MyParticle3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CA1A12994A00F249EC /* MyParticle3.sks */; };
 		074530CC1A12994A00F249EC /* MyParticle3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CA1A12994A00F249EC /* MyParticle3.sks */; };
 		074530CE1A12996400F249EC /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CD1A12996400F249EC /* spark.sks */; };
@@ -131,7 +129,6 @@
 		073B663D19FAB6D000C09008 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		073B664219FACB0A00C09008 /* spark2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark2.sks; sourceTree = "<group>"; };
 		074530C11A12968700F249EC /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
-		074530C71A1297F900F249EC /* MyParticle2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle2.sks; sourceTree = "<group>"; };
 		074530CA1A12994A00F249EC /* MyParticle3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle3.sks; sourceTree = "<group>"; };
 		074530CD1A12996400F249EC /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
@@ -233,7 +230,6 @@
 				073B664219FACB0A00C09008 /* spark2.sks */,
 				073B663C19FAB6D000C09008 /* fire.sks */,
 				074530C11A12968700F249EC /* MyParticle.sks */,
-				074530C71A1297F900F249EC /* MyParticle2.sks */,
 				074530CA1A12994A00F249EC /* MyParticle3.sks */,
 				074530CD1A12996400F249EC /* spark.sks */,
 				073B663D19FAB6D000C09008 /* spark.png */,
@@ -421,7 +417,6 @@
 				07062B1E19FBB1810022983B /* sword1.png in Resources */,
 				070325391A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				07BFCE3019FB5EEE00B0342A /* mosamosa.ttf in Resources */,
-				074530C81A1297F900F249EC /* MyParticle2.sks in Resources */,
 				07B7342119F939A0006C8205 /* LaunchScreen.xib in Resources */,
 				071DE00419FEB38E0097DB51 /* ddd.m4a in Resources */,
 				07B7341E19F939A0006C8205 /* Images.xcassets in Resources */,
@@ -475,7 +470,6 @@
 				073B664419FACB0A00C09008 /* spark2.sks in Resources */,
 				0703253A1A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				077043F31A00F2B20097B108 /* 3.m4a in Resources */,
-				074530C91A1297F900F249EC /* MyParticle2.sks in Resources */,
 				07AE54EE19FD614F00E9824B /* test.mp3 in Resources */,
 				074530CF1A12996400F249EC /* spark.sks in Resources */,
 				074530C41A12968700F249EC /* MyParticle.sks in Resources */,
