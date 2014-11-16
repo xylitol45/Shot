@@ -101,112 +101,48 @@ class PlayScene: SKScene {
         preLocation = nil
     }
     
-    var _lastTime:CFTimeInterval = 0
+//    var _lastTime:CFTimeInterval = 0
     var lastUpdateTime:CFTimeInterval = 0
     
     // MARK: 画面更新(update)
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        let _player = childNodeWithName("player")
+        checkCollision()
         
-        enumerateChildNodesWithName("enemy") {
-            node, stop in
-            
-            var _flg = false
-            var _hp = (node.userData!["hp"] as Int)
-            
-            // SKShapeNodeの場合はこちら
-            if CGRectIntersectsRect(node.frame, _player!.frame) {
-                (node as SKShapeNode).fillColor=SKColor.redColor()
-                self.zan++;
-            }
-
-            
-            if _hp == self.NoDestroyHp {
-                return
-            }
-            
-            self.enumerateChildNodesWithName("missile") {
-                node2, stop2 in
-                if CGRectIntersectsRect(node.frame, node2.frame) {
-                    node2.removeFromParent()
-                    _flg = true
-                    stop2.memory = true
-                }
-            }
-            
-            if _flg {
-                
-                NSLog("hit")
-                
-//             var _userData = node.userData!
-                _hp--;
-                if _hp > 0 {
-                    node.userData!["hp"] = _hp
-                } else {
-                    
-                    self.score += 10
-                    self.refreshScore()
-                    
-                    let _spark = self.spark!.copy() as SKEmitterNode
-                    
-                    
-                    _spark.position = CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame))
-                    _spark.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1),SKAction.removeFromParent()]))
-                    _spark.zPosition = 50
-                    
-                    self.addChild(_spark)
-                    
-                    
-                    
-                    node.removeFromParent()
-                }
-                
-                
-                println(_hp)
-                
-//                Int(node.userData["hp"])
-                
-                
-                stop.memory = true
-                
-                return
-            }
-            
-        }
-        
-        var _flg = false
-        
-        // star
+        // 定期的処理
         if (currentTime - lastUpdateTime) > 0.2 {
             
-            for i in 1...10 {
-                
-                if (arc4random() % 4) == 0 {
-                    continue
-                }
-            
-                
-                let _node = SKShapeNode(rect: CGRectMake(0, 0, 3, 3))
-                _node.fillColor=SKColor.blackColor()
-                
-                let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(self.frame))))
-                let _y = CGRectGetMaxY(self.frame)+10
-                // let _y = CGFloat(arc4random()) %  CGRectGetMaxY(self.frame)
-                
-                _node.position = CGPointMake(_x, _y)
-                _node.zPosition = 10
-                _node.name = "star"
-                
-                let _duration = NSTimeInterval( ((arc4random() % 10) + 1))
-                let _moveDown = SKAction.moveToY(-10, duration: _duration)
-                let _sequence = SKAction.sequence([_moveDown, SKAction.removeFromParent()])
-                _node.runAction(_sequence)
+            let _player = childNodeWithName("player")
 
-                addChild(_node)
+            initStarSprite()
             
-            }
+//            for i in 1...10 {
+//                
+//                if (arc4random() % 4) == 0 {
+//                    continue
+//                }
+//            
+//                
+//                let _node = SKShapeNode(rect: CGRectMake(0, 0, 3, 3))
+//                _node.fillColor=SKColor.blackColor()
+//                
+//                let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(self.frame))))
+//                let _y = CGRectGetMaxY(self.frame)+10
+//                // let _y = CGFloat(arc4random()) %  CGRectGetMaxY(self.frame)
+//                
+//                _node.position = CGPointMake(_x, _y)
+//                _node.zPosition = 10
+//                _node.name = "star"
+//                
+//                let _duration = NSTimeInterval( ((arc4random() % 10) + 1))
+//                let _moveDown = SKAction.moveToY(-10, duration: _duration)
+//                let _sequence = SKAction.sequence([_moveDown, SKAction.removeFromParent()])
+//                _node.runAction(_sequence)
+//
+//                addChild(_node)
+//            
+//            }
             
             if (arc4random_uniform(4) == 0) {
                 initNoDestroyEnemySprite()
@@ -225,30 +161,174 @@ class PlayScene: SKScene {
                 
             }
             
-            for i in 0...1 {
-                let _path = UIBezierPath()
-                _path.moveToPoint(CGPointMake(0, 0))
-                _path.addLineToPoint(CGPointMake(0,31))
-                
-                let _missile = SKShapeNode(path: _path.CGPath)
-                _missile.name = "missile"
-                _missile.strokeColor = SKColor.blackColor()
-                _missile.position = CGPointMake(_player!.position.x - 8 + (CGFloat(i)*16), _player!.position.y+32)
-                
-                addChild(_missile)
-                
-                let _moveUp = SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1)
-    
-                let _sequence = SKAction.sequence([_moveUp, SKAction.removeFromParent()])
-                
-                _missile.runAction(_sequence)
- 
-            }
+            initMissileSprite(_player!.frame)
+
+//            for i in 0...1 {
+//                let _path = UIBezierPath()
+//                _path.moveToPoint(CGPointMake(0, 0))
+//                _path.addLineToPoint(CGPointMake(0,31))
+//                
+//                let _missile = SKShapeNode(path: _path.CGPath)
+//                _missile.name = "missile"
+//                _missile.strokeColor = SKColor.blackColor()
+//                _missile.position =
+//                    CGPointMake(_player!.position.x + 16 + (CGFloat(i)*32), _player!.position.y+64)
+//                
+//                addChild(_missile)
+//                
+//                let _moveUp = SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1)
+//    
+//                let _sequence = SKAction.sequence([_moveUp, SKAction.removeFromParent()])
+//                
+//                _missile.runAction(_sequence)
+// 
+//            }
             
             lastUpdateTime = currentTime
         }
         
     }
+    
+    // MARK: 当たり判定
+    func checkCollision() {
+        let _player = childNodeWithName("player")! as SKShapeNode
+        
+        // 当たり判定
+        enumerateChildNodesWithName("enemy") {
+            node, stop in
+            
+            var _flg = false
+            var _hp = (node.userData!["hp"] as Int)
+            
+            // SKShapeNodeの場合はこちら
+            // player
+            if CGRectIntersectsRect(node.frame, _player.frame) {
+                
+//                _player.strokeColor = SKColor.redColor()
+//                let colorAction = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0 , duration: 1)
+                
+                let _que = dispatch_queue_create("com.kick55.a.Shot.background", nil)
+                
+                dispatch_async( _que, {
+                    
+                    for i in 0...9 {
+                        
+                        let _f = 1.0 / CGFloat(10 - i)
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            let _player = self.childNodeWithName("player")! as SKShapeNode
+                            
+                            _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
+                            
+                            
+                            
+                        });
+
+                        NSThread.sleepForTimeInterval(0.05)
+                        
+                        
+                    }
+                    
+
+                    dispatch_async(dispatch_get_main_queue(), {
+                        let _player = self.childNodeWithName("player")! as SKShapeNode
+                        
+                        _player.fillColor = UIColor.whiteColor()
+                        
+                        
+                    });
+
+                
+                })
+//                
+//                
+//                _player.runAction(SKAction.sequence([
+//                    SKAction.runBlock({
+////                        let _player = self.childNodeWithName("player")! as SKShapeNode
+//                        
+//                        for i in 0...9 {
+//                            let _f = 1.0 / CGFloat(10 - i)
+//                            
+//                            _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
+//                            
+//                            // 全部が止まってしまう...
+////                            NSThread.sleepForTimeInterval(0.5)
+//                            
+//                        }
+//                        
+//                        _player.fillColor = UIColor.whiteColor()
+//                    })
+//                    ]))
+                
+                self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)), scale:0.5)
+                
+                node.removeFromParent()
+                
+                self.zan++;
+                
+                return
+            }
+            
+            
+            if _hp == self.NoDestroyHp {
+                return
+            }
+            
+            var _hitFlg = false
+            self.enumerateChildNodesWithName("missile") {
+                node2, stop2 in
+                if CGRectIntersectsRect(node.frame, node2.frame) {
+                    
+                    
+                    
+                    
+                    node2.removeFromParent()
+                    _hitFlg = true
+                    stop2.memory = true
+                }
+            }
+            
+            if _hitFlg {
+                //             var _userData = node.userData!
+                _hp--;
+                if _hp > 0 {
+                    node.userData!["hp"] = _hp
+                } else {
+                    
+                    self.score += 10
+                    self.refreshScore()
+                    
+                    self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
+                    
+//                    let _spark = self.spark!.copy() as SKEmitterNode
+//                    
+//                    
+//                    _spark.position = CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame))
+//                    _spark.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1),SKAction.removeFromParent()]))
+//                    _spark.zPosition = 50
+//                    
+//                    self.addChild(_spark)
+                    
+                    
+                    
+                    node.removeFromParent()
+                }
+                
+                
+                println(_hp)
+                
+                //                Int(node.userData["hp"])
+                
+                
+                stop.memory = true
+                
+                return
+            }
+            
+        }
+
+    }
+    
     #if false
     
     override func   didEvaluateActions() {
@@ -303,8 +383,6 @@ class PlayScene: SKScene {
         addChild(_zanNode)
 
         
-        let _sparkPath = NSBundle.mainBundle().pathForResource("spark", ofType: "sks")!
-        self.spark = NSKeyedUnarchiver.unarchiveObjectWithFile(_sparkPath) as SKEmitterNode?
         
     }
     
@@ -535,6 +613,37 @@ class PlayScene: SKScene {
         addChild(player!)
     }
     
+    func initMissileSprite(rect:CGRect) {
+        
+        for i in 0...1 {
+            
+            
+            
+            let _path = UIBezierPath()
+            _path.moveToPoint(CGPointMake(0, 0))
+            _path.addLineToPoint(CGPointMake(0,31))
+            
+            let _missile = SKShapeNode(path: _path.CGPath)
+            _missile.name = "missile"
+            _missile.strokeColor = SKColor.blackColor()
+            _missile.position =
+                CGPointMake(rect.origin.x + 16 + (CGFloat(i)*32), rect.origin.y + 64)
+            
+            addChild(_missile)
+            
+            let _moveUp = SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1)
+            
+            let _sequence = SKAction.sequence([_moveUp, SKAction.removeFromParent()])
+            
+            _missile.runAction(_sequence)
+            
+        }
+        
+
+        
+        
+    }
+    
     func createEnemySprite(hp:Int)->SKShapeNode {
         
         let _path = UIBezierPath()
@@ -590,6 +699,54 @@ class PlayScene: SKScene {
         
         _sprite.runAction(SKAction.sequence([_moveTo,SKAction.removeFromParent()]))
         
+    }
+
+    func initSparkSprite(position:CGPoint, scale:CGFloat = 1.0) {
+       
+        if (self.spark ==  nil) {
+            let _sparkPath = NSBundle.mainBundle().pathForResource("spark", ofType: "sks")!
+            self.spark = NSKeyedUnarchiver.unarchiveObjectWithFile(_sparkPath) as SKEmitterNode?
+        }
+
+        let _spark = self.spark!.copy() as SKEmitterNode
         
+        _spark.yScale = scale
+        _spark.xScale = scale
+        _spark.position = position
+        _spark.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1),SKAction.removeFromParent()]))
+        _spark.zPosition = 1000
+        
+        self.addChild(_spark)
+        
+    }
+    
+    func initStarSprite() {
+        
+        for i in 1...10 {
+            
+            if (arc4random() % 4) == 0 {
+                continue
+            }
+            
+            
+            let _node = SKShapeNode(rect: CGRectMake(0, 0, 3, 3))
+            _node.fillColor=SKColor.blackColor()
+            
+            let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(self.frame))))
+            let _y = CGRectGetMaxY(self.frame)+10
+            // let _y = CGFloat(arc4random()) %  CGRectGetMaxY(self.frame)
+            
+            _node.position = CGPointMake(_x, _y)
+            _node.zPosition = 10
+            _node.name = "star"
+            
+            let _duration = NSTimeInterval( ((arc4random() % 10) + 1))
+            let _moveDown = SKAction.moveToY(-10, duration: _duration)
+            let _sequence = SKAction.sequence([_moveDown, SKAction.removeFromParent()])
+            _node.runAction(_sequence)
+            
+            addChild(_node)
+            
+        }
     }
 }
