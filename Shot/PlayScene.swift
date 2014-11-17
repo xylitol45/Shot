@@ -111,7 +111,7 @@ class PlayScene: SKScene {
         checkCollision()
         
         // 定期的処理
-        if (currentTime - lastUpdateTime) > 0.2 {
+        if (currentTime - lastUpdateTime) > 0.1 {
             
             let _player = childNodeWithName("player")
 
@@ -159,6 +159,10 @@ class PlayScene: SKScene {
                 
                 addChild(_node)
                 
+            }
+            
+            if (arc4random_uniform(10) == 0) {
+                initEnemySprite2()
             }
             
             initMissileSprite(_player!.frame)
@@ -617,11 +621,9 @@ class PlayScene: SKScene {
         
         for i in 0...1 {
             
-            
-            
             let _path = UIBezierPath()
             _path.moveToPoint(CGPointMake(0, 0))
-            _path.addLineToPoint(CGPointMake(0,31))
+            _path.addLineToPoint(CGPointMake(0,16))
             
             let _missile = SKShapeNode(path: _path.CGPath)
             _missile.name = "missile"
@@ -664,9 +666,36 @@ class PlayScene: SKScene {
         return _sprite
     }
     
+    func initEnemySprite2() {
+        let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(100, 50))
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 10
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(frame))))
+        
+        _sprite.position = CGPointMake(_x, CGRectGetMaxY(frame) + 100)
+        
+        let _action = SKAction.group([
+            SKAction.repeatActionForever(SKAction.rotateByAngle(CGFloat(M_PI_2) * -1, duration: 5)),
+            SKAction.sequence([
+                SKAction.moveTo(CGPointMake(_x, -100), duration: 20),
+                SKAction.removeFromParent()])
+        ])
+        
+        _sprite.runAction(_action)
+        
+        addChild(_sprite)
+        
+    
+    }
+    
     func initNoDestroyEnemySprite() {
         
-        let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 20, 20))
+        let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 10, 10))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = NoDestroyHp
         _sprite.fillColor = SKColor.whiteColor()
@@ -724,7 +753,7 @@ class PlayScene: SKScene {
         
         for i in 1...10 {
             
-            if (arc4random() % 4) == 0 {
+            if (arc4random_uniform(10)) == 0 {
                 continue
             }
             
