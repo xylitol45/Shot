@@ -31,6 +31,7 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
+        /* Called when a touch begins */
         
         if (touches.count == 1) {
             
@@ -43,35 +44,6 @@ class GameScene: SKScene {
             
             
         }
-        
-        /* Called when a touch begins */
-        
-//        for touch: AnyObject in touches {
-//            let location = touch.locationInNode(self)
-//            
-//            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-//            
-//            sprite.xScale = 0.5
-//            sprite.yScale = 0.5
-//            sprite.position = location
-//            
-//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-//            
-//            sprite.runAction(SKAction.repeatActionForever(action))
-//            
-//            self.addChild(sprite)
-//        }
-        
-//        let touch:AnyObject = touches.anyObject()!;
-//        let location = touch.locationInNode(self);
-//        let moveToTouch = SKAction.moveTo(location, duration: 1.0);
-//        
-//        let sword = childNodeWithName("sword")!;
-//        
-//        sword.runAction(moveToTouch, completion: { () -> Void in
-//            NSLog("%@", NSStringFromCGPoint(location));
-//        });
-        
         
     }
    

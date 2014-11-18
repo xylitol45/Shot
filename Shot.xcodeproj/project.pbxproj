@@ -19,16 +19,16 @@
 		07062B1F19FBB1810022983B /* sword1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1D19FBB1810022983B /* sword1.png */; };
 		07062B2119FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
 		07062B2219FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
-		071DE00419FEB38E0097DB51 /* ddd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* ddd.m4a */; };
-		071DE00519FEB38E0097DB51 /* ddd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* ddd.m4a */; };
+		071DE00419FEB38E0097DB51 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* 0.m4a */; };
+		071DE00519FEB38E0097DB51 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00319FEB38E0097DB51 /* 0.m4a */; };
 		071DE00719FEB49D0097DB51 /* efg.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00619FEB49D0097DB51 /* efg.m4a */; };
 		071DE00819FEB49D0097DB51 /* efg.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00619FEB49D0097DB51 /* efg.m4a */; };
 		071DE00A19FEB5710097DB51 /* asd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00919FEB5710097DB51 /* asd.m4a */; };
 		071DE00B19FEB5710097DB51 /* asd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00919FEB5710097DB51 /* asd.m4a */; };
-		071DE00D19FEB81C0097DB51 /* rrr.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00C19FEB81C0097DB51 /* rrr.m4a */; };
-		071DE00E19FEB81C0097DB51 /* rrr.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00C19FEB81C0097DB51 /* rrr.m4a */; };
-		071DE01319FEC25D0097DB51 /* zed.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 071DE01219FEC25D0097DB51 /* zed.m4r */; };
-		071DE01419FEC25D0097DB51 /* zed.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 071DE01219FEC25D0097DB51 /* zed.m4r */; };
+		071DE00D19FEB81C0097DB51 /* 5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00C19FEB81C0097DB51 /* 5.m4a */; };
+		071DE00E19FEB81C0097DB51 /* 5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00C19FEB81C0097DB51 /* 5.m4a */; };
+		071DE01319FEC25D0097DB51 /* 4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE01219FEC25D0097DB51 /* 4.m4a */; };
+		071DE01419FEC25D0097DB51 /* 4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE01219FEC25D0097DB51 /* 4.m4a */; };
 		072245761A13CF3B00848443 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 072245751A13CF3B00848443 /* MyScene.sks */; };
 		072245771A13CF3B00848443 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 072245751A13CF3B00848443 /* MyScene.sks */; };
 		073B663719FA949200C09008 /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B663619FA949200C09008 /* FirstScene.swift */; };
@@ -89,8 +89,8 @@
 		07BFCE4019FB797F00B0342A /* SKHeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */; };
 		07DC2DF819FBC4C700512340 /* SKGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */; };
 		07DC2DF919FBC4C700512340 /* SKGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */; };
-		07E5461B1A000ADA00A1845F /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07E5461A1A000ADA00A1845F /* 0.m4a */; };
-		07E5461C1A000ADA00A1845F /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07E5461A1A000ADA00A1845F /* 0.m4a */; };
+		07E5461B1A000ADA00A1845F /* 6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07E5461A1A000ADA00A1845F /* 6.m4a */; };
+		07E5461C1A000ADA00A1845F /* 6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07E5461A1A000ADA00A1845F /* 6.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,11 +110,11 @@
 		07062B1A19FBB1720022983B /* chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chest.png; sourceTree = "<group>"; };
 		07062B1D19FBB1810022983B /* sword1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword1.png; sourceTree = "<group>"; };
 		07062B2019FBB1910022983B /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bat.png; sourceTree = "<group>"; };
-		071DE00319FEB38E0097DB51 /* ddd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ddd.m4a; sourceTree = "<group>"; };
+		071DE00319FEB38E0097DB51 /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
 		071DE00619FEB49D0097DB51 /* efg.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = efg.m4a; sourceTree = "<group>"; };
 		071DE00919FEB5710097DB51 /* asd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = asd.m4a; sourceTree = "<group>"; };
-		071DE00C19FEB81C0097DB51 /* rrr.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rrr.m4a; sourceTree = "<group>"; };
-		071DE01219FEC25D0097DB51 /* zed.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = zed.m4r; sourceTree = "<group>"; };
+		071DE00C19FEB81C0097DB51 /* 5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5.m4a; sourceTree = "<group>"; };
+		071DE01219FEC25D0097DB51 /* 4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4.m4a; sourceTree = "<group>"; };
 		072245751A13CF3B00848443 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		073B663619FA949200C09008 /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		073B663919FA958B00C09008 /* SecondScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondScene.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		07BFCE3B19FB778D00B0342A /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
 		07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHeroNode.swift; sourceTree = "<group>"; };
 		07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKGameOverScene.swift; sourceTree = "<group>"; };
-		07E5461A1A000ADA00A1845F /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
+		07E5461A1A000ADA00A1845F /* 6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 6.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,12 +279,12 @@
 				07062B1D19FBB1810022983B /* sword1.png */,
 				07062B2019FBB1910022983B /* bat.png */,
 				07B3617C19FD5B7300FD332E /* hommage.mp3 */,
-				071DE00319FEB38E0097DB51 /* ddd.m4a */,
+				071DE00319FEB38E0097DB51 /* 0.m4a */,
 				071DE00619FEB49D0097DB51 /* efg.m4a */,
 				071DE00919FEB5710097DB51 /* asd.m4a */,
-				071DE00C19FEB81C0097DB51 /* rrr.m4a */,
-				071DE01219FEC25D0097DB51 /* zed.m4r */,
-				07E5461A1A000ADA00A1845F /* 0.m4a */,
+				071DE00C19FEB81C0097DB51 /* 5.m4a */,
+				071DE01219FEC25D0097DB51 /* 4.m4a */,
+				07E5461A1A000ADA00A1845F /* 6.m4a */,
 				077043EB1A00F2280097B108 /* 1.m4a */,
 				077043EE1A00F2550097B108 /* 2.m4a */,
 				077043F11A00F2B20097B108 /* 3.m4a */,
@@ -405,12 +405,12 @@
 				070325391A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				07BFCE3019FB5EEE00B0342A /* mosamosa.ttf in Resources */,
 				07B7342119F939A0006C8205 /* LaunchScreen.xib in Resources */,
-				071DE00419FEB38E0097DB51 /* ddd.m4a in Resources */,
+				071DE00419FEB38E0097DB51 /* 0.m4a in Resources */,
 				07B7341E19F939A0006C8205 /* Images.xcassets in Resources */,
 				071DE00719FEB49D0097DB51 /* efg.m4a in Resources */,
 				07062B1B19FBB1720022983B /* chest.png in Resources */,
 				07B7341519F939A0006C8205 /* GameScene.sks in Resources */,
-				071DE01319FEC25D0097DB51 /* zed.m4r in Resources */,
+				071DE01319FEC25D0097DB51 /* 4.m4a in Resources */,
 				073B663E19FAB6D000C09008 /* fire.sks in Resources */,
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
 				07BFCE3C19FB778D00B0342A /* wood.png in Resources */,
@@ -424,12 +424,12 @@
 				078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				073B664019FAB6D000C09008 /* spark.png in Resources */,
 				07B7344E19F970B8006C8205 /* clotharmor.png in Resources */,
-				071DE00D19FEB81C0097DB51 /* rrr.m4a in Resources */,
+				071DE00D19FEB81C0097DB51 /* 5.m4a in Resources */,
 				07B7344B19F93E43006C8205 /* sword.png in Resources */,
 				077043F21A00F2B20097B108 /* 3.m4a in Resources */,
 				074530CE1A12996400F249EC /* spark.sks in Resources */,
 				073B664319FACB0A00C09008 /* spark2.sks in Resources */,
-				07E5461B1A000ADA00A1845F /* 0.m4a in Resources */,
+				07E5461B1A000ADA00A1845F /* 6.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
-				07E5461C1A000ADA00A1845F /* 0.m4a in Resources */,
+				07E5461C1A000ADA00A1845F /* 6.m4a in Resources */,
 				07B7344F19F970B8006C8205 /* clotharmor.png in Resources */,
 				07062B2219FBB1910022983B /* bat.png in Resources */,
 				077043ED1A00F2280097B108 /* 1.m4a in Resources */,
@@ -460,11 +460,11 @@
 				07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */,
 				07B7343E19F93A43006C8205 /* Images.xcassets in Resources */,
 				07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */,
-				071DE01419FEC25D0097DB51 /* zed.m4r in Resources */,
+				071DE01419FEC25D0097DB51 /* 4.m4a in Resources */,
 				073B664119FAB6D000C09008 /* spark.png in Resources */,
 				07BFCE3D19FB778D00B0342A /* wood.png in Resources */,
-				071DE00519FEB38E0097DB51 /* ddd.m4a in Resources */,
-				071DE00E19FEB81C0097DB51 /* rrr.m4a in Resources */,
+				071DE00519FEB38E0097DB51 /* 0.m4a in Resources */,
+				071DE00E19FEB81C0097DB51 /* 5.m4a in Resources */,
 				07B7343F19F93A43006C8205 /* GameScene.sks in Resources */,
 				07B7344019F93A43006C8205 /* Main.storyboard in Resources */,
 				0703253D1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
