@@ -188,7 +188,7 @@ class PlayScene: SKScene {
                 }
                 
                 
-                // player効果
+                // playerダメージ効果
                 let _que = dispatch_queue_create("com.kick55.a.Shot.background", nil)
                 dispatch_async( _que, {
                     for i in 0...9 {
@@ -215,6 +215,7 @@ class PlayScene: SKScene {
                 return
             }
             
+            // ミサイル判定
             var _hitFlg = false
             self.enumerateChildNodesWithName("missile") {
                 node2, stop2 in
@@ -280,14 +281,6 @@ class PlayScene: SKScene {
         
         self.backgroundColor = UIColor.whiteColor()
         
-//        if sound == nil {
-//            let bgmPath = NSBundle.mainBundle().pathForResource("2", ofType: "m4a")!
-//            let bgmUrl = NSURL.fileURLWithPath(bgmPath)
-//            sound = AVAudioPlayer(contentsOfURL: bgmUrl, error: nil)
-//            sound!.numberOfLoops = -1
-//            sound!.play()
-//        }
-
         changeSound()
         
         // 自機
@@ -448,12 +441,8 @@ class PlayScene: SKScene {
                 SKAction.moveTo(CGPointMake(_x, -100), duration: 20),
                 SKAction.removeFromParent()])
             ])
-        
         _sprite.runAction(_action)
-        
         addChild(_sprite)
-        
-        
     }
     
     func initNoDestroyEnemySprite() {

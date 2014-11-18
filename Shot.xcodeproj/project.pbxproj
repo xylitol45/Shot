@@ -35,12 +35,8 @@
 		073B663819FA949200C09008 /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B663619FA949200C09008 /* FirstScene.swift */; };
 		073B663A19FA958B00C09008 /* SecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B663919FA958B00C09008 /* SecondScene.swift */; };
 		073B663B19FA958B00C09008 /* SecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B663919FA958B00C09008 /* SecondScene.swift */; };
-		073B663E19FAB6D000C09008 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B663C19FAB6D000C09008 /* fire.sks */; };
-		073B663F19FAB6D000C09008 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B663C19FAB6D000C09008 /* fire.sks */; };
 		073B664019FAB6D000C09008 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 073B663D19FAB6D000C09008 /* spark.png */; };
 		073B664119FAB6D000C09008 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 073B663D19FAB6D000C09008 /* spark.png */; };
-		073B664319FACB0A00C09008 /* spark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B664219FACB0A00C09008 /* spark2.sks */; };
-		073B664419FACB0A00C09008 /* spark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073B664219FACB0A00C09008 /* spark2.sks */; };
 		074530CE1A12996400F249EC /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CD1A12996400F249EC /* spark.sks */; };
 		074530CF1A12996400F249EC /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 074530CD1A12996400F249EC /* spark.sks */; };
 		077043E91A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
@@ -53,8 +49,6 @@
 		077043F31A00F2B20097B108 /* 3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043F11A00F2B20097B108 /* 3.m4a */; };
 		078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078954FC1A14F75B00CAAA60 /* PlayScene.sks */; };
 		078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078954FC1A14F75B00CAAA60 /* PlayScene.sks */; };
-		07AE54ED19FD614F00E9824B /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07AE54EC19FD614F00E9824B /* test.mp3 */; };
-		07AE54EE19FD614F00E9824B /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07AE54EC19FD614F00E9824B /* test.mp3 */; };
 		07B3617D19FD5B7300FD332E /* hommage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07B3617C19FD5B7300FD332E /* hommage.mp3 */; };
 		07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07B3617C19FD5B7300FD332E /* hommage.mp3 */; };
 		07B7341319F939A0006C8205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7341219F939A0006C8205 /* AppDelegate.swift */; };
@@ -118,16 +112,13 @@
 		072245751A13CF3B00848443 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		073B663619FA949200C09008 /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		073B663919FA958B00C09008 /* SecondScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondScene.swift; sourceTree = "<group>"; };
-		073B663C19FAB6D000C09008 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		073B663D19FAB6D000C09008 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		073B664219FACB0A00C09008 /* spark2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark2.sks; sourceTree = "<group>"; };
 		074530CD1A12996400F249EC /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		077043EB1A00F2280097B108 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
 		077043EE1A00F2550097B108 /* 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.m4a; sourceTree = "<group>"; };
 		077043F11A00F2B20097B108 /* 3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3.m4a; sourceTree = "<group>"; };
 		078954FC1A14F75B00CAAA60 /* PlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayScene.sks; sourceTree = "<group>"; };
-		07AE54EC19FD614F00E9824B /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		07B3617C19FD5B7300FD332E /* hommage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hommage.mp3; sourceTree = "<group>"; };
 		07B7340D19F939A0006C8205 /* Shot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B7341119F939A0006C8205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,8 +209,6 @@
 				07B7341D19F939A0006C8205 /* Images.xcassets */,
 				07B7341F19F939A0006C8205 /* LaunchScreen.xib */,
 				073B663619FA949200C09008 /* FirstScene.swift */,
-				073B664219FACB0A00C09008 /* spark2.sks */,
-				073B663C19FAB6D000C09008 /* fire.sks */,
 				074530CD1A12996400F249EC /* spark.sks */,
 				073B663D19FAB6D000C09008 /* spark.png */,
 				073B663919FA958B00C09008 /* SecondScene.swift */,
@@ -270,7 +259,6 @@
 		07B7344C19F93E4A006C8205 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07AE54EC19FD614F00E9824B /* test.mp3 */,
 				07062B1A19FBB1720022983B /* chest.png */,
 				07B7344A19F93E43006C8205 /* sword.png */,
 				07B7344D19F970B8006C8205 /* clotharmor.png */,
@@ -279,15 +267,15 @@
 				07062B1D19FBB1810022983B /* sword1.png */,
 				07062B2019FBB1910022983B /* bat.png */,
 				07B3617C19FD5B7300FD332E /* hommage.mp3 */,
-				071DE00319FEB38E0097DB51 /* 0.m4a */,
 				071DE00619FEB49D0097DB51 /* efg.m4a */,
 				071DE00919FEB5710097DB51 /* asd.m4a */,
-				071DE00C19FEB81C0097DB51 /* 5.m4a */,
-				071DE01219FEC25D0097DB51 /* 4.m4a */,
-				07E5461A1A000ADA00A1845F /* 6.m4a */,
+				071DE00319FEB38E0097DB51 /* 0.m4a */,
 				077043EB1A00F2280097B108 /* 1.m4a */,
 				077043EE1A00F2550097B108 /* 2.m4a */,
 				077043F11A00F2B20097B108 /* 3.m4a */,
+				071DE01219FEC25D0097DB51 /* 4.m4a */,
+				071DE00C19FEB81C0097DB51 /* 5.m4a */,
+				07E5461A1A000ADA00A1845F /* 6.m4a */,
 				070325381A0FC27F00557588 /* プロジェクト39.m4a */,
 				0703253B1A0FC29D00557588 /* プロジェクト42 2.m4a */,
 			);
@@ -411,7 +399,6 @@
 				07062B1B19FBB1720022983B /* chest.png in Resources */,
 				07B7341519F939A0006C8205 /* GameScene.sks in Resources */,
 				071DE01319FEC25D0097DB51 /* 4.m4a in Resources */,
-				073B663E19FAB6D000C09008 /* fire.sks in Resources */,
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
 				07BFCE3C19FB778D00B0342A /* wood.png in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
@@ -420,7 +407,6 @@
 				07B3617D19FD5B7300FD332E /* hommage.mp3 in Resources */,
 				077043EC1A00F2280097B108 /* 1.m4a in Resources */,
 				07062B2119FBB1910022983B /* bat.png in Resources */,
-				07AE54ED19FD614F00E9824B /* test.mp3 in Resources */,
 				078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				073B664019FAB6D000C09008 /* spark.png in Resources */,
 				07B7344E19F970B8006C8205 /* clotharmor.png in Resources */,
@@ -428,7 +414,6 @@
 				07B7344B19F93E43006C8205 /* sword.png in Resources */,
 				077043F21A00F2B20097B108 /* 3.m4a in Resources */,
 				074530CE1A12996400F249EC /* spark.sks in Resources */,
-				073B664319FACB0A00C09008 /* spark2.sks in Resources */,
 				07E5461B1A000ADA00A1845F /* 6.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,10 +437,8 @@
 				07062B1F19FBB1810022983B /* sword1.png in Resources */,
 				071DE00B19FEB5710097DB51 /* asd.m4a in Resources */,
 				07BFCE3119FB5EEE00B0342A /* mosamosa.ttf in Resources */,
-				073B664419FACB0A00C09008 /* spark2.sks in Resources */,
 				0703253A1A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				077043F31A00F2B20097B108 /* 3.m4a in Resources */,
-				07AE54EE19FD614F00E9824B /* test.mp3 in Resources */,
 				074530CF1A12996400F249EC /* spark.sks in Resources */,
 				07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */,
 				07B7343E19F93A43006C8205 /* Images.xcassets in Resources */,
@@ -472,7 +455,6 @@
 				071DE00819FEB49D0097DB51 /* efg.m4a in Resources */,
 				07062B1C19FBB1720022983B /* chest.png in Resources */,
 				072245771A13CF3B00848443 /* MyScene.sks in Resources */,
-				073B663F19FAB6D000C09008 /* fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
