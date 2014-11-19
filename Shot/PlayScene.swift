@@ -23,16 +23,16 @@ class PlayScene: SKScene {
     }
     #endif
     
+    enum Mode {
+        case Title, Game, EndGame
+    }
+    
+    var mode:Mode = .Title
+    
     let NoDestroyHp = 999999
     
     var _contentCreated = false;
     
-    override func didMoveToView(view: SKView) {
-        if (!_contentCreated) {
-            createSceneContent();
-            _contentCreated = true;
-        }
-    }
     
     var playerMoving = false
     
@@ -51,10 +51,34 @@ class PlayScene: SKScene {
     class func randomCGFloat() -> CGFloat {
         return CGFloat(arc4random()) /  CGFloat(UInt32.max)
     }
+
+    // MARK: 開始
+    override func didMoveToView(view: SKView) {
+        
+        readData()
+        
+        
+        startTitle()
+    }
+
     
     
     // MARK: touch
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
+        if let _touch: AnyObject = touches.anyObject() {
+            let _node = nodeAtPoint(_touch.locationInNode(self))
+            if _node.name == "start" {
+                self.startGame()
+                return
+            }
+            if _node.name == "push" {
+                self.startTitle()
+                return
+            }
+        }
+        
+        
         
         let _player = self.childNodeWithName("player")
         
@@ -248,18 +272,30 @@ class PlayScene: SKScene {
     var soundPath = ["0", "1", "2", "3"]
     func changeSound() {
         
+        //  タイトルでは流さない
+        if mode == .Title {
+            soundStop()
+            return
+        }
         
+        // Fadeout
         if sound != nil {
             if sound!.volume > 0.1 {
                 sound!.volume -= 0.1
                 NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
                 return
             }
-            
-            sound!.stop()
-            sound = nil
         }
         
+        // 今の曲を止める
+        soundStop()
+
+        // ゲームオーバでは次曲なし
+        if mode == .EndGame {
+            return
+        }
+        
+        // 次の曲
         soundIndex++
         if soundIndex >= soundPath.count {
             soundIndex = 0
@@ -276,15 +312,30 @@ class PlayScene: SKScene {
     
     }
     
+    func soundStop() {
+        if sound != nil {
+            if sound!.playing {
+                sound!.stop()
+            }
+            sound = nil
+        }
+    }
+    
     // MARK: 初期化
     func createSceneContent() {
         
+        if self._contentCreated {
+            return
+        }
+        
+        _contentCreated = true
+        
         self.backgroundColor = UIColor.whiteColor()
         
-        changeSound()
+//        changeSound()
         
         // 自機
-        initPlayer()
+//        initPlayer()
         
         // CGAffineTransformMakeTranslation(<#tx: CGFloat#>, <#ty: CGFloat#>)
         
@@ -317,21 +368,108 @@ class PlayScene: SKScene {
         }
         
         // 表示初期化
+//        refreshScore()
+    }
+    
+    // MARK: シーン変更
+    func startTitle() {
+        
+        mode = .Title
+        
+        if let _node = childNodeWithName("gameover") {
+            _node.removeFromParent()
+        }
+        if let _node = childNodeWithName("push") {
+            _node.removeFromParent()
+        }
+        
+        for _row:SKNode in children as [SKNode] {
+            if _row.name == "enemy" {
+                _row.removeFromParent()
+            }
+            if _row.name == "star" {
+                _row.removeFromParent()
+            }
+        }
+        
+        createSceneContent()
+        
+        var _y = CGRectGetMidY(frame) + 100
+        
+        let _titleNode = SKLabelNode(text:"Shot")
+        _titleNode.name = "title"
+        _titleNode.position = CGPointMake(CGRectGetMidX(frame), _y)
+        _titleNode.fontColor = SKColor.blackColor()
+        _titleNode.zPosition = 1000
+        addChild(_titleNode)
+        
+        _y -= 100
+        
+        let _startNode = SKLabelNode(text: "start")
+        _startNode.name = "start"
+        _startNode.position = CGPointMake(CGRectGetMidX(frame), _y)
+        _startNode.fontColor = SKColor.blackColor()
+        _startNode.zPosition = 1000
+        addChild(_startNode)
+        
+        zan = 0
+        score = 0
         refreshScore()
+        
+        soundStop()
+    }
+    
+    func startGame() {
+        
+        mode = .Game
+        
+        if let _titleNode = childNodeWithName("title") {
+            _titleNode.removeFromParent()
+        }
+        
+        if let _startNode = childNodeWithName("start") {
+            _startNode.removeFromParent()
+        }
+        
+        enumerateChildNodesWithName("enemy") {
+            node, stop in
+                node.removeFromParent()
+        }
+        
+        initPlayer()
+        
+        zan = 0
+        score = 0
+        
+        refreshScore()
+        
+        changeSound()
     }
     
     func endGame() {
         
+        mode = .EndGame
+        
+        var _y = CGRectGetMidY(frame) + 100
+        
         let _node = SKLabelNode(text: "GAME OVER")
-        _node.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))
+        _node.name = "gameover"
+        _node.position = CGPointMake(CGRectGetMidX(frame), _y)
         _node.fontColor = SKColor.blackColor()
         _node.zPosition = 1000
         addChild(_node)
         
+        _y -= 100
+        
+        let _pushNode = SKLabelNode(text: "PUSH")
+        _pushNode.name = "push"
+        _pushNode.position = CGPointMake(CGRectGetMidX(frame), _y)
+        _pushNode.fontColor = SKColor.blackColor()
+        _pushNode.zPosition = 1000
+        addChild(_pushNode)
+
+        
     }
-    
-    
-    
     
     func refreshScore() {
         let _scoreNode = childNodeWithName("score")! as SKLabelNode
@@ -346,8 +484,32 @@ class PlayScene: SKScene {
         
     }
     
+    func readData() {
+        
+        let _path = NSBundle.mainBundle().pathForResource("data", ofType: "json")!
+        let _handle = NSFileHandle(forReadingAtPath: _path)!
+        let _data:NSData! = _handle.readDataToEndOfFile()
+        
+        let _json =
+            NSJSONSerialization.JSONObjectWithData(_data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary!
+        
+        let _enemy = _json.objectForKey("enemy") as [NSDictionary]!
+
+        for _row in _enemy {
+            println(_row.objectForKey("ap"))
+            println(_row.objectForKey("hp"))
+        }
+        
+        
+    }
+    
     // MARK: sprite
     func initPlayer() {
+        
+        // 存在していたら削除
+        if let _player = childNodeWithName("player") {
+            _player.removeFromParent()
+        }
         
         // 自機
         let _path = UIBezierPath()
@@ -422,6 +584,7 @@ class PlayScene: SKScene {
     }
     
     func initEnemySprite2() {
+                
         let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(100, 50))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 10
