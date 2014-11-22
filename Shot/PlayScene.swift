@@ -270,6 +270,7 @@ class PlayScene: SKScene {
     // MARK: sound
     var soundIndex = -1
     var soundPath = ["0", "1", "2", "3"]
+    var soundTimer:NSTimer? = nil
     func changeSound() {
         
         //  タイトルでは流さない
@@ -308,7 +309,8 @@ class PlayScene: SKScene {
         sound!.numberOfLoops = -1
         sound!.play()
         
-        NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
+        soundTimer =
+            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
     
     }
     
@@ -414,8 +416,9 @@ class PlayScene: SKScene {
         
         zan = 0
         score = 0
-        refreshScore()
         
+        refreshScore()
+
         soundStop()
     }
     
@@ -443,6 +446,13 @@ class PlayScene: SKScene {
         
         refreshScore()
         
+        soundIndex = -1
+        if soundTimer != nil {
+            if soundTimer!.valid {
+                soundTimer!.invalidate()
+            }
+            soundTimer = nil
+        }
         changeSound()
     }
     
@@ -467,8 +477,6 @@ class PlayScene: SKScene {
         _pushNode.fontColor = SKColor.blackColor()
         _pushNode.zPosition = 1000
         addChild(_pushNode)
-
-        
     }
     
     func refreshScore() {
@@ -499,8 +507,6 @@ class PlayScene: SKScene {
             println(_row.objectForKey("ap"))
             println(_row.objectForKey("hp"))
         }
-        
-        
     }
     
     // MARK: sprite
@@ -662,7 +668,7 @@ class PlayScene: SKScene {
         _spark.yScale = scale
         _spark.xScale = scale
         _spark.position = position
-    _spark.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1),SKAction.removeFromParent()]))
+        _spark.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1),SKAction.removeFromParent()]))
         _spark.zPosition = 1000
         
         self.addChild(_spark)
