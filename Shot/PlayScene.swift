@@ -45,6 +45,7 @@ class PlayScene: SKScene {
     var player:SKShapeNode? = nil
     var score = 0
     var zan = 0
+    var highscores = [NSDictionary]()
     
     // MARK: クラスメソッド
     // 0.0-1.0
@@ -58,6 +59,7 @@ class PlayScene: SKScene {
         readData()
         
         
+        
         startTitle()
     }
 
@@ -66,19 +68,15 @@ class PlayScene: SKScene {
     // MARK: touch
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
-        if let _touch: AnyObject = touches.anyObject() {
-            let _node = nodeAtPoint(_touch.locationInNode(self))
-            if _node.name == "start" {
-                self.startGame()
-                return
-            }
-            if _node.name == "push" {
-                self.startTitle()
-                return
-            }
+        if self.mode == .Title {
+            startGame()
+            return
         }
         
-        
+        if self.mode == .EndGame {
+            startTitle()
+            return
+        }
         
         let _player = self.childNodeWithName("player")
         
@@ -329,10 +327,14 @@ class PlayScene: SKScene {
         if self._contentCreated {
             return
         }
-        
         _contentCreated = true
         
         self.backgroundColor = UIColor.whiteColor()
+        
+        let _defaults = NSUserDefaults.standardUserDefaults()
+        if let _array:NSArray = _defaults.arrayForKey("highscores") {
+            highscores = _array.mutableCopy() as [NSDictionary]
+        }
         
 //        changeSound()
         
@@ -459,6 +461,17 @@ class PlayScene: SKScene {
     func endGame() {
         
         mode = .EndGame
+        
+        highscores.append(["date":NSDate(), "score":score]);
+        highscores = highscores.sorted {
+            (dictOne, dictTwo) -> Bool in
+            return dictOne["score"] as Int! > dictTwo["score"] as Int!
+        }
+        if highscores.count > 5 {
+            highscores =  Array(highscores[0..<5]) as [NSDictionary]
+        }
+        NSUserDefaults.standardUserDefaults().setObject(highscores, forKey: "highscore")
+        NSUserDefaults.standardUserDefaults().synchronize()
         
         var _y = CGRectGetMidY(frame) + 100
         
