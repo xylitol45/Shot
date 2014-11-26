@@ -149,6 +149,8 @@ class PlayScene: SKScene {
             
             initStarSprite()
             
+            if mode == .Game {
+            
             if (arc4random_uniform(4) == 0) {
                 initNoDestroyEnemySprite()
             }
@@ -162,8 +164,18 @@ class PlayScene: SKScene {
                 initEnemySprite2()
             }
             
+            if (arc4random_uniform(20) == 0) {
+                initEnemySprite3()
+            }
+            
+            if (arc4random_uniform(20) == 0) {
+                initEnemySprite4()
+            }
+
             if _player != nil {
                 initMissileSprite(_player!.frame)
+            }
+            
             }
             
             lastUpdateTime = currentTime
@@ -587,7 +599,7 @@ class PlayScene: SKScene {
         
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
-        _sprite.userData!["hp"] = 5
+        _sprite.userData!["hp"] = 4
         _sprite.userData!["ap"] = 450
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
@@ -627,6 +639,73 @@ class PlayScene: SKScene {
         addChild(_sprite)
     }
     
+    func initEnemySprite3() {
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(50,0))
+        _path.addLineToPoint(CGPointMake(0,50))
+        _path.addLineToPoint(CGPointMake(50,50))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 450
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        _sprite.position = CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(frame))-100)), CGRectGetMaxY(frame)+10)
+        
+        _sprite.runAction(
+            SKAction.sequence([
+                SKAction.moveToY(CGRectGetMidY(frame) / 2, duration: 3),
+                SKAction.moveTo(
+                    arc4random_uniform(2) == 0 ? CGPointMake(-100, CGRectGetMidY(frame)) : CGPointMake(CGRectGetMaxX(frame)+100, CGRectGetMidY(frame)), duration:  1),
+                SKAction.removeFromParent()]))
+        
+        addChild(_sprite)
+    }
+    
+    func initEnemySprite4() {
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(50,0))
+        _path.addLineToPoint(CGPointMake(0,50))
+        _path.addLineToPoint(CGPointMake(50,50))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 450
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        _sprite.position = CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(frame))-100)), CGRectGetMaxY(frame)+10)
+        
+        var _circle = CGPathCreateMutable()!
+        
+        CGPathMoveToPoint(_circle, nil, 0, 0)
+        CGPathAddArc(_circle, nil, 0, 200, 200, CGFloat(M_PI_2), CGFloat(-M_PI_2), true);
+        
+        
+        
+        _sprite.runAction(
+            SKAction.sequence([
+                SKAction.moveToY(CGRectGetMidY(frame) / 2, duration: 3),
+                SKAction.followPath(_circle, asOffset: true, orientToPath: false, duration: 1),
+                SKAction.moveToY(-100, duration:1),
+                SKAction.removeFromParent()]))
+        
+        addChild(_sprite)
+    }
+
     func initNoDestroyEnemySprite() {
         
         let _player = self.childNodeWithName("player")
