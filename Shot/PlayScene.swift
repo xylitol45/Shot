@@ -155,20 +155,19 @@ class PlayScene: SKScene {
                 initNoDestroyEnemySprite()
             }
             
-            if (arc4random() % 10) == 0 {
+            if arc4random_uniform(30) == 0 {
                 initEnemySprite()
-                
             }
             
-            if (arc4random_uniform(10) == 0) {
+            if (arc4random_uniform(30) == 0) {
                 initEnemySprite2()
             }
             
-            if (arc4random_uniform(20) == 0) {
+            if (arc4random_uniform(30) == 0) {
                 initEnemySprite3()
             }
             
-            if (arc4random_uniform(20) == 0) {
+            if (arc4random_uniform(30) == 0) {
                 initEnemySprite4()
             }
 
@@ -383,8 +382,10 @@ class PlayScene: SKScene {
             addChild(_zanNode!)
         }
         
-        // 表示初期化
-//        refreshScore()
+        // highscores read
+        if let _highscores = NSUserDefaults.standardUserDefaults().objectForKey("highscores") as NSArray! {
+            self.highscores = Array(_highscores) as [NSDictionary]
+        }
     }
     
     // MARK: シーン変更
@@ -410,7 +411,7 @@ class PlayScene: SKScene {
         
         createSceneContent()
         
-        var _y = CGRectGetMidY(frame) + 100
+        var _y = blockHeight() * 6
         
         let _titleNode = SKLabelNode(text:"Shot")
         _titleNode.name = "title"
@@ -419,14 +420,33 @@ class PlayScene: SKScene {
         _titleNode.zPosition = 1000
         addChild(_titleNode)
         
+//        _y -= 100
+//        
+//        let _startNode = SKLabelNode(text: "PUSH")
+//        _startNode.name = "start"
+//        _startNode.position = CGPointMake(CGRectGetMidX(frame), _y)
+//        _startNode.fontColor = SKColor.blackColor()
+//        _startNode.zPosition = 1000
+//        addChild(_startNode)
+
+        var _index = 0;
         _y -= 100
         
-        let _startNode = SKLabelNode(text: "start")
-        _startNode.name = "start"
-        _startNode.position = CGPointMake(CGRectGetMidX(frame), _y)
-        _startNode.fontColor = SKColor.blackColor()
-        _startNode.zPosition = 1000
-        addChild(_startNode)
+        for _row in self.highscores {
+            
+            println(_row)
+            
+            
+            let _str = String(_index+1) + ". " + String(_row["score"] as Int)
+            let _scoreNode = SKLabelNode(text:_str)
+            _scoreNode.name = "title"
+            _scoreNode.position = CGPointMake(CGRectGetMidX(frame), _y - CGFloat(_index) * 60)
+            _scoreNode.fontColor = SKColor.blackColor()
+            _scoreNode.zPosition = 1000
+            addChild(_scoreNode)
+            _index++
+        
+        }
         
         zan = 0
         score = 0
@@ -440,13 +460,11 @@ class PlayScene: SKScene {
         
         mode = .Game
         
-        if let _titleNode = childNodeWithName("title") {
-            _titleNode.removeFromParent()
+        enumerateChildNodesWithName("title") {
+            node, stop in
+                node.removeFromParent()
         }
-        
-        if let _startNode = childNodeWithName("start") {
-            _startNode.removeFromParent()
-        }
+
         
         enumerateChildNodesWithName("enemy") {
             node, stop in
@@ -482,10 +500,10 @@ class PlayScene: SKScene {
         if highscores.count > 5 {
             highscores =  Array(highscores[0..<5]) as [NSDictionary]
         }
-        NSUserDefaults.standardUserDefaults().setObject(highscores, forKey: "highscore")
+        NSUserDefaults.standardUserDefaults().setObject(highscores, forKey: "highscores")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        var _y = CGRectGetMidY(frame) + 100
+        var _y = blockHeight() * 6
         
         let _node = SKLabelNode(text: "GAME OVER")
         _node.name = "gameover"
@@ -494,14 +512,14 @@ class PlayScene: SKScene {
         _node.zPosition = 1000
         addChild(_node)
         
-        _y -= 100
-        
-        let _pushNode = SKLabelNode(text: "PUSH")
-        _pushNode.name = "push"
-        _pushNode.position = CGPointMake(CGRectGetMidX(frame), _y)
-        _pushNode.fontColor = SKColor.blackColor()
-        _pushNode.zPosition = 1000
-        addChild(_pushNode)
+//        _y -= 100
+//        
+//        let _pushNode = SKLabelNode(text: "PUSH")
+//        _pushNode.name = "push"
+//        _pushNode.position = CGPointMake(CGRectGetMidX(frame), _y)
+//        _pushNode.fontColor = SKColor.blackColor()
+//        _pushNode.zPosition = 1000
+//        addChild(_pushNode)
     }
     
     func refreshScore() {
@@ -532,6 +550,10 @@ class PlayScene: SKScene {
             println(_row.objectForKey("ap"))
             println(_row.objectForKey("hp"))
         }
+    }
+    
+    func blockHeight()->CGFloat {
+        return CGRectGetMaxY(frame) / 8
     }
     
     // MARK: sprite
@@ -716,7 +738,7 @@ class PlayScene: SKScene {
         let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 10, 10))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = NoDestroyHp
-        _sprite.userData!["ap"] = 10
+        _sprite.userData!["ap"] = 12
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
