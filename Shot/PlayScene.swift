@@ -45,6 +45,7 @@ class PlayScene: SKScene {
     var player:SKShapeNode? = nil
     var score = 0
     var zan = 0
+    var phase = 0
     var highscores = [NSDictionary]()
     
     // MARK: クラスメソッド
@@ -56,8 +57,8 @@ class PlayScene: SKScene {
     // MARK: 開始
     override func didMoveToView(view: SKView) {
         
-        readData()
         
+        readData()
         
         
         startTitle()
@@ -150,30 +151,36 @@ class PlayScene: SKScene {
             initStarSprite()
             
             if mode == .Game {
+                
+                phase++;
+                
+                if let _node = childNodeWithName("phase") as SKLabelNode! {
+                    _node.text = String(phase)
+                }
             
-            if (arc4random_uniform(4) == 0) {
-                initNoDestroyEnemySprite()
-            }
+                if (arc4random_uniform(4) == 0) {
+                    initNoDestroyEnemySprite()
+                }
             
-            if arc4random_uniform(30) == 0 {
-                initEnemySprite()
-            }
+                if arc4random_uniform(30) == 0 {
+                    initEnemySprite()
+                }
             
-            if (arc4random_uniform(30) == 0) {
-                initEnemySprite2()
-            }
+                if (arc4random_uniform(30) == 0) {
+                    initEnemySprite2()
+                }
             
-            if (arc4random_uniform(30) == 0) {
-                initEnemySprite3()
-            }
+                if (arc4random_uniform(30) == 0) {
+                    initEnemySprite3()
+                }
             
-            if (arc4random_uniform(30) == 0) {
-                initEnemySprite4()
-            }
+                if (arc4random_uniform(30) == 0) {
+                    initEnemySprite4()
+                }
 
-            if _player != nil {
-                initMissileSprite(_player!.frame)
-            }
+                if _player != nil {
+                    initMissileSprite(_player!.frame)
+                }
             
             }
             
@@ -340,6 +347,14 @@ class PlayScene: SKScene {
         }
         _contentCreated = true
         
+        
+        let _fmt = NSDateFormatter()
+        _fmt.dateFormat="yyyy-MM-dd HH:mm:ss"
+        _fmt.locale=NSLocale(localeIdentifier: "ja_JP")
+        
+        NSLog("[%@]", _fmt.stringFromDate(NSDate()))
+        
+        
         self.backgroundColor = UIColor.whiteColor()
         
         let _defaults = NSUserDefaults.standardUserDefaults()
@@ -347,10 +362,6 @@ class PlayScene: SKScene {
             highscores = _array.mutableCopy() as [NSDictionary]
         }
         
-//        changeSound()
-        
-        // 自機
-//        initPlayer()
         
         // CGAffineTransformMakeTranslation(<#tx: CGFloat#>, <#ty: CGFloat#>)
         
@@ -361,7 +372,7 @@ class PlayScene: SKScene {
         if _scoreNode == nil {
             _scoreNode = SKLabelNode(text: "0")
             _scoreNode!.name="score"
-            _scoreNode!.position = CGPointMake(100,  CGRectGetMaxY(self.frame)-50)
+            _scoreNode!.position = CGPointMake(CGRectGetMidX(frame),  CGRectGetMaxY(self.frame)-50)
             _scoreNode!.fontColor=UIColor.blackColor()
             _scoreNode!.verticalAlignmentMode = .Bottom
             _scoreNode!.horizontalAlignmentMode = .Right
@@ -380,6 +391,19 @@ class PlayScene: SKScene {
             _zanNode!.horizontalAlignmentMode = .Right
             _zanNode!.zPosition=1000
             addChild(_zanNode!)
+        }
+        
+        // phase
+        var _phaseNode = childNodeWithName("phase") as SKLabelNode?
+        if _phaseNode == nil {
+            _phaseNode = SKLabelNode(text: "")
+            _phaseNode!.name = "phase"
+            _phaseNode!.position = CGPointMake(0,0)
+            _phaseNode!.fontColor=SKColor.blackColor()
+            _phaseNode!.verticalAlignmentMode = .Bottom
+            _phaseNode!.horizontalAlignmentMode = .Left
+            _phaseNode!.zPosition=1000
+            addChild(_phaseNode!)
         }
         
         // highscores read
@@ -432,17 +456,23 @@ class PlayScene: SKScene {
         var _index = 0;
         _y -= 100
         
+        let _fmt = NSDateFormatter()
+        let _fmtJa = NSDateFormatter()
+        _fmtJa.dateFormat = "yyMMdd"
+        _fmtJa.locale = NSLocale(localeIdentifier: "ja_JP")
         for _row in self.highscores {
             
-            println(_row)
+            println(_row["date"])
+//            let _dateString = _row["date"] as NSDate!
+
             
-            
-            let _str = String(_index+1) + ". " + String(_row["score"] as Int)
+            let _str = String(_index+1) + ". "  + String(_row["score"] as Int)
             let _scoreNode = SKLabelNode(text:_str)
             _scoreNode.name = "title"
-            _scoreNode.position = CGPointMake(CGRectGetMidX(frame), _y - CGFloat(_index) * 60)
+            _scoreNode.position = CGPointMake(CGRectGetMidX(frame) - 80, _y - CGFloat(_index) * 40)
             _scoreNode.fontColor = SKColor.blackColor()
             _scoreNode.zPosition = 1000
+            _scoreNode.horizontalAlignmentMode = .Left
             addChild(_scoreNode)
             _index++
         
@@ -450,6 +480,7 @@ class PlayScene: SKScene {
         
         zan = 0
         score = 0
+        phase = 0
         
         refreshScore()
 
@@ -492,6 +523,9 @@ class PlayScene: SKScene {
         
         mode = .EndGame
         
+        let _fmt = NSDateFormatter()
+        
+//        highscores.append(["date":_fmt.stringFromDate(NSDate()),  "score":score]);
         highscores.append(["date":NSDate(), "score":score]);
         highscores = highscores.sorted {
             (dictOne, dictTwo) -> Bool in

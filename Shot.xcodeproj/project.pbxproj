@@ -13,12 +13,6 @@
 		0703253D1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0703253B1A0FC29D00557588 /* プロジェクト42 2.m4a */; };
 		0703253F1A0FC31200557588 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0703253E1A0FC31200557588 /* PlayScene.swift */; };
 		070325401A0FC31200557588 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0703253E1A0FC31200557588 /* PlayScene.swift */; };
-		07062B1B19FBB1720022983B /* chest.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1A19FBB1720022983B /* chest.png */; };
-		07062B1C19FBB1720022983B /* chest.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1A19FBB1720022983B /* chest.png */; };
-		07062B1E19FBB1810022983B /* sword1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1D19FBB1810022983B /* sword1.png */; };
-		07062B1F19FBB1810022983B /* sword1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B1D19FBB1810022983B /* sword1.png */; };
-		07062B2119FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
-		07062B2219FBB1910022983B /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 07062B2019FBB1910022983B /* bat.png */; };
 		071DE00719FEB49D0097DB51 /* efg.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00619FEB49D0097DB51 /* efg.m4a */; };
 		071DE00819FEB49D0097DB51 /* efg.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00619FEB49D0097DB51 /* efg.m4a */; };
 		071DE00A19FEB5710097DB51 /* asd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 071DE00919FEB5710097DB51 /* asd.m4a */; };
@@ -68,19 +62,12 @@
 		07B7343F19F93A43006C8205 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341419F939A0006C8205 /* GameScene.sks */; };
 		07B7344019F93A43006C8205 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341A19F939A0006C8205 /* Main.storyboard */; };
 		07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B7344719F93A45006C8205 /* LaunchScreen.xib */; };
-		07B7344B19F93E43006C8205 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7344A19F93E43006C8205 /* sword.png */; };
-		07B7344E19F970B8006C8205 /* clotharmor.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7344D19F970B8006C8205 /* clotharmor.png */; };
-		07B7344F19F970B8006C8205 /* clotharmor.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7344D19F970B8006C8205 /* clotharmor.png */; };
-		07BFCE3019FB5EEE00B0342A /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07BFCE2F19FB5EEE00B0342A /* mosamosa.ttf */; };
-		07BFCE3119FB5EEE00B0342A /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07BFCE2F19FB5EEE00B0342A /* mosamosa.ttf */; };
 		07BFCE3319FB5F5E00B0342A /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3219FB5F5E00B0342A /* SKButtonNode.swift */; };
 		07BFCE3419FB5F5E00B0342A /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3219FB5F5E00B0342A /* SKButtonNode.swift */; };
 		07BFCE3619FB65FD00B0342A /* SKTitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3519FB65FD00B0342A /* SKTitleScene.swift */; };
 		07BFCE3719FB65FD00B0342A /* SKTitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3519FB65FD00B0342A /* SKTitleScene.swift */; };
 		07BFCE3919FB6C9700B0342A /* SKPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3819FB6C9700B0342A /* SKPlayScene.swift */; };
 		07BFCE3A19FB6C9700B0342A /* SKPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3819FB6C9700B0342A /* SKPlayScene.swift */; };
-		07BFCE3C19FB778D00B0342A /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BFCE3B19FB778D00B0342A /* wood.png */; };
-		07BFCE3D19FB778D00B0342A /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BFCE3B19FB778D00B0342A /* wood.png */; };
 		07BFCE3F19FB797F00B0342A /* SKHeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */; };
 		07BFCE4019FB797F00B0342A /* SKHeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */; };
 		07DC2DF819FBC4C700512340 /* SKGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */; };
@@ -103,9 +90,6 @@
 		070325381A0FC27F00557588 /* プロジェクト39.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "プロジェクト39.m4a"; sourceTree = "<group>"; };
 		0703253B1A0FC29D00557588 /* プロジェクト42 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "プロジェクト42 2.m4a"; sourceTree = "<group>"; };
 		0703253E1A0FC31200557588 /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
-		07062B1A19FBB1720022983B /* chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chest.png; sourceTree = "<group>"; };
-		07062B1D19FBB1810022983B /* sword1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword1.png; sourceTree = "<group>"; };
-		07062B2019FBB1910022983B /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bat.png; sourceTree = "<group>"; };
 		071DE00619FEB49D0097DB51 /* efg.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = efg.m4a; sourceTree = "<group>"; };
 		071DE00919FEB5710097DB51 /* asd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = asd.m4a; sourceTree = "<group>"; };
 		071DE00C19FEB81C0097DB51 /* 5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5.m4a; sourceTree = "<group>"; };
@@ -138,13 +122,9 @@
 		07B7344419F93A43006C8205 /* Shot-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B7344619F93A43006C8205 /* Shot copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shot copy-Info.plist"; path = "/Users/yoshimura/Documents/Shot/Shot copy-Info.plist"; sourceTree = "<absolute>"; };
 		07B7344819F93A45006C8205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Resources-iPad/Shot/Base.lproj/LaunchScreen.xib"; sourceTree = "<group>"; };
-		07B7344A19F93E43006C8205 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
-		07B7344D19F970B8006C8205 /* clotharmor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clotharmor.png; sourceTree = "<group>"; };
-		07BFCE2F19FB5EEE00B0342A /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mosamosa.ttf; sourceTree = "<group>"; };
 		07BFCE3219FB5F5E00B0342A /* SKButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButtonNode.swift; sourceTree = "<group>"; };
 		07BFCE3519FB65FD00B0342A /* SKTitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTitleScene.swift; sourceTree = "<group>"; };
 		07BFCE3819FB6C9700B0342A /* SKPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPlayScene.swift; sourceTree = "<group>"; };
-		07BFCE3B19FB778D00B0342A /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
 		07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHeroNode.swift; sourceTree = "<group>"; };
 		07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKGameOverScene.swift; sourceTree = "<group>"; };
 		07E5461A1A000ADA00A1845F /* 6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 6.m4a; sourceTree = "<group>"; };
@@ -262,13 +242,6 @@
 		07B7344C19F93E4A006C8205 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07062B1A19FBB1720022983B /* chest.png */,
-				07B7344A19F93E43006C8205 /* sword.png */,
-				07B7344D19F970B8006C8205 /* clotharmor.png */,
-				07BFCE3B19FB778D00B0342A /* wood.png */,
-				07BFCE2F19FB5EEE00B0342A /* mosamosa.ttf */,
-				07062B1D19FBB1810022983B /* sword1.png */,
-				07062B2019FBB1910022983B /* bat.png */,
 				07B3617C19FD5B7300FD332E /* hommage.mp3 */,
 				071DE00619FEB49D0097DB51 /* efg.m4a */,
 				071DE00919FEB5710097DB51 /* asd.m4a */,
@@ -393,30 +366,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				072245761A13CF3B00848443 /* MyScene.sks in Resources */,
-				07062B1E19FBB1810022983B /* sword1.png in Resources */,
 				070325391A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
-				07BFCE3019FB5EEE00B0342A /* mosamosa.ttf in Resources */,
 				07B7342119F939A0006C8205 /* LaunchScreen.xib in Resources */,
 				07B7341E19F939A0006C8205 /* Images.xcassets in Resources */,
 				071DE00719FEB49D0097DB51 /* efg.m4a in Resources */,
-				07062B1B19FBB1720022983B /* chest.png in Resources */,
 				07B7341519F939A0006C8205 /* GameScene.sks in Resources */,
 				0751B9D01A1CEF2E008472ED /* 0.m4a in Resources */,
 				071DE01319FEC25D0097DB51 /* 4.m4a in Resources */,
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
-				07BFCE3C19FB778D00B0342A /* wood.png in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
 				0703253C1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
 				074F80541A1CF2D9008E02DC /* data.json in Resources */,
 				071DE00A19FEB5710097DB51 /* asd.m4a in Resources */,
 				07B3617D19FD5B7300FD332E /* hommage.mp3 in Resources */,
 				077043EC1A00F2280097B108 /* 1.m4a in Resources */,
-				07062B2119FBB1910022983B /* bat.png in Resources */,
 				078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				073B664019FAB6D000C09008 /* spark.png in Resources */,
-				07B7344E19F970B8006C8205 /* clotharmor.png in Resources */,
 				071DE00D19FEB81C0097DB51 /* 5.m4a in Resources */,
-				07B7344B19F93E43006C8205 /* sword.png in Resources */,
 				077043F21A00F2B20097B108 /* 3.m4a in Resources */,
 				074530CE1A12996400F249EC /* spark.sks in Resources */,
 				07E5461B1A000ADA00A1845F /* 6.m4a in Resources */,
@@ -436,12 +402,8 @@
 			files = (
 				078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				07E5461C1A000ADA00A1845F /* 6.m4a in Resources */,
-				07B7344F19F970B8006C8205 /* clotharmor.png in Resources */,
-				07062B2219FBB1910022983B /* bat.png in Resources */,
 				077043ED1A00F2280097B108 /* 1.m4a in Resources */,
-				07062B1F19FBB1810022983B /* sword1.png in Resources */,
 				071DE00B19FEB5710097DB51 /* asd.m4a in Resources */,
-				07BFCE3119FB5EEE00B0342A /* mosamosa.ttf in Resources */,
 				0703253A1A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				0751B9D11A1CEF2E008472ED /* 0.m4a in Resources */,
 				077043F31A00F2B20097B108 /* 3.m4a in Resources */,
@@ -452,14 +414,12 @@
 				071DE01419FEC25D0097DB51 /* 4.m4a in Resources */,
 				074F80551A1CF2D9008E02DC /* data.json in Resources */,
 				073B664119FAB6D000C09008 /* spark.png in Resources */,
-				07BFCE3D19FB778D00B0342A /* wood.png in Resources */,
 				071DE00E19FEB81C0097DB51 /* 5.m4a in Resources */,
 				07B7343F19F93A43006C8205 /* GameScene.sks in Resources */,
 				07B7344019F93A43006C8205 /* Main.storyboard in Resources */,
 				0703253D1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
 				077043F01A00F2550097B108 /* 2.m4a in Resources */,
 				071DE00819FEB49D0097DB51 /* efg.m4a in Resources */,
-				07062B1C19FBB1720022983B /* chest.png in Resources */,
 				072245771A13CF3B00848443 /* MyScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
