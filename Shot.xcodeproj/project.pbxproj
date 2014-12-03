@@ -35,6 +35,8 @@
 		074F80551A1CF2D9008E02DC /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 074F80531A1CF2D9008E02DC /* data.json */; };
 		0751B9D01A1CEF2E008472ED /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0751B9CF1A1CEF2E008472ED /* 0.m4a */; };
 		0751B9D11A1CEF2E008472ED /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0751B9CF1A1CEF2E008472ED /* 0.m4a */; };
+		075312F11A2F674900EE7037 /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075312F01A2F674900EE7037 /* EnemyFactory.swift */; };
+		075312F21A2F674900EE7037 /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075312F01A2F674900EE7037 /* EnemyFactory.swift */; };
 		077043E91A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
 		077043EA1A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
 		077043EC1A00F2280097B108 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 1.m4a */; };
@@ -101,6 +103,7 @@
 		074530CD1A12996400F249EC /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		074F80531A1CF2D9008E02DC /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		0751B9CF1A1CEF2E008472ED /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
+		075312F01A2F674900EE7037 /* EnemyFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyFactory.swift; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		077043EB1A00F2280097B108 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
 		077043EE1A00F2550097B108 /* 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.m4a; sourceTree = "<group>"; };
@@ -185,9 +188,10 @@
 				07B7341419F939A0006C8205 /* GameScene.sks */,
 				072245751A13CF3B00848443 /* MyScene.sks */,
 				078954FC1A14F75B00CAAA60 /* PlayScene.sks */,
-				07B7341619F939A0006C8205 /* GameScene.swift */,
 				0703253E1A0FC31200557588 /* PlayScene.swift */,
+				075312F01A2F674900EE7037 /* EnemyFactory.swift */,
 				07B7341819F939A0006C8205 /* GameViewController.swift */,
+				07B7341619F939A0006C8205 /* GameScene.swift */,
 				07B7341A19F939A0006C8205 /* Main.storyboard */,
 				07B7341D19F939A0006C8205 /* Images.xcassets */,
 				07B7341F19F939A0006C8205 /* LaunchScreen.xib */,
@@ -436,6 +440,7 @@
 				073B663A19FA958B00C09008 /* SecondScene.swift in Sources */,
 				073B663719FA949200C09008 /* FirstScene.swift in Sources */,
 				07BFCE3619FB65FD00B0342A /* SKTitleScene.swift in Sources */,
+				075312F11A2F674900EE7037 /* EnemyFactory.swift in Sources */,
 				07DC2DF819FBC4C700512340 /* SKGameOverScene.swift in Sources */,
 				07BFCE3319FB5F5E00B0342A /* SKButtonNode.swift in Sources */,
 				07B7341919F939A0006C8205 /* GameViewController.swift in Sources */,
@@ -463,6 +468,7 @@
 				073B663B19FA958B00C09008 /* SecondScene.swift in Sources */,
 				073B663819FA949200C09008 /* FirstScene.swift in Sources */,
 				07BFCE3719FB65FD00B0342A /* SKTitleScene.swift in Sources */,
+				075312F21A2F674900EE7037 /* EnemyFactory.swift in Sources */,
 				07DC2DF919FBC4C700512340 /* SKGameOverScene.swift in Sources */,
 				07BFCE3419FB5F5E00B0342A /* SKButtonNode.swift in Sources */,
 				07B7343919F93A43006C8205 /* GameViewController.swift in Sources */,
