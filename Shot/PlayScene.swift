@@ -41,7 +41,7 @@ class PlayScene: SKScene {
     
     var lastUpdateTime:CFTimeInterval = 0
     var sound:AVAudioPlayer? = nil
-    var player:SKShapeNode? = nil
+    var player:SKNode? = nil
     var score = 0
     var zan = 0
     var phase = 0
@@ -186,10 +186,12 @@ class PlayScene: SKScene {
     
     // MARK: 当たり判定
     func checkCollision() {
-        let _player = childNodeWithName("player") as SKShapeNode?
+        let _player = childNodeWithName("player") as SKNode?
         if _player == nil {
             return
         }
+        
+        let _playerFrame = _player!.calculateAccumulatedFrame()
         
         // 当たり判定
         enumerateChildNodesWithName("enemy") {
@@ -201,7 +203,12 @@ class PlayScene: SKScene {
             
             // SKShapeNodeの場合はこちら
             // player
-            if CGRectIntersectsRect(node.frame, _player!.frame) {
+            // if node.intersectsNode(_player!){
+                
+           if CGRectIntersectsRect(node.frame, _playerFrame) {
+                
+                println(" player.frame \(_player!.frame)")
+                
                 //                _player.strokeColor = SKColor.redColor()
                 //                let colorAction = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0 , duration: 1)
                 self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)), scale:0.5)
@@ -232,16 +239,27 @@ class PlayScene: SKScene {
                     for i in 0...9 {
                         let _f = 1.0 / CGFloat(10 - i)
                         dispatch_async(dispatch_get_main_queue(), {
-                            if let _player = self.childNodeWithName("player") as SKShapeNode? {
-                                _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
+                            if let _player:SKNode = self.childNodeWithName("player") as SKNode! {
+                                
+                                for _node in _player.children as [SKShapeNode] {
+                                    _node.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
+
+                                }
+                                
+//                                _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
                             }
                             
                         });
                         NSThread.sleepForTimeInterval(0.08)
                     }
                     dispatch_async(dispatch_get_main_queue(), {
-                        if let _player = self.childNodeWithName("player") as SKShapeNode? {
-                            _player.fillColor = UIColor.whiteColor()
+                        if let _player = self.childNodeWithName("player") as SKNode? {
+//                            _player.fillColor = UIColor.whiteColor()
+                            for _node in _player.children as [SKShapeNode] {
+                                _node.fillColor = SKColor.whiteColor()
+                                
+                            }
+
                         }
                         self.playerCollision = false
                     });
@@ -579,22 +597,38 @@ class PlayScene: SKScene {
             _player.removeFromParent()
         }
         
+        
+        
         // 自機
         let _path = UIBezierPath()
         _path.moveToPoint(CGPointMake(0, 0))
-        _path.addLineToPoint(CGPointMake(63, 0))
-        _path.addLineToPoint(CGPointMake(47,63))
-        _path.addLineToPoint(CGPointMake(31,0))
-        _path.addLineToPoint(CGPointMake(15,63))
+        _path.addLineToPoint(CGPointMake(15, 0))
+        _path.addLineToPoint(CGPointMake(7,31))
+        
+//        _path.addLineToPoint(CGPointMake(31,0))
+//        _path.addLineToPoint(CGPointMake(15,63))
         _path.closePath()
         
-        player = SKShapeNode(path: _path.CGPath)
+        let _sub = SKShapeNode(path: _path.CGPath)
+        _sub.fillColor = SKColor.whiteColor()
+        _sub.strokeColor = SKColor.blackColor()
+        _sub.position = CGPointMake(0,0)
         
+        let _sub2 = _sub.copy() as SKShapeNode
+        _sub2.position = CGPointMake(16, 0)
+        
+        
+        player = SKNode()
+        
+        player?.addChild(_sub)
+        player?.addChild(_sub2)
         player?.name = "player"
-        player?.fillColor = SKColor.whiteColor()
-        player?.strokeColor = SKColor.blackColor()
         player?.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))
         player?.zPosition = 100
+        
+        
+//        player?.fillColor = SKColor.whiteColor()
+//        player?.strokeColor = SKColor.blackColor()
         
         addChild(player!)
     }
@@ -605,13 +639,13 @@ class PlayScene: SKScene {
             
             let _path = UIBezierPath()
             _path.moveToPoint(CGPointMake(0, 0))
-            _path.addLineToPoint(CGPointMake(0,16))
+            _path.addLineToPoint(CGPointMake(0,7))
             
             let _missile = SKShapeNode(path: _path.CGPath)
             _missile.name = "missile"
             _missile.strokeColor = SKColor.blackColor()
             _missile.position =
-                CGPointMake(rect.origin.x + 16 + (CGFloat(i)*32), rect.origin.y + 64)
+                CGPointMake(rect.origin.x + 7 + (CGFloat(i)*16), rect.origin.y + 32)
             
             addChild(_missile)
             
@@ -647,7 +681,7 @@ class PlayScene: SKScene {
     
     func initStarSprite() {
         
-        if (arc4random_uniform(4) != 0) {
+        if (arc4random_uniform(5) != 0) {
             return
         }
         

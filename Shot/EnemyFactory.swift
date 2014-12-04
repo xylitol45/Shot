@@ -16,26 +16,24 @@ class EnemyFactory {
             EnemyFactory.initNoDestroyEnemySprite(scene)
         }
         
-        if arc4random_uniform(20) == 0 {
+        if arc4random_uniform(10) != 0 {
+            return;
+        }
+        
+        let _no = arc4random_uniform(4)
+        
+        switch(_no) {
+        case 0:
             EnemyFactory.initEnemySprite(scene)
-            return;
-        }
-        
-        if (arc4random_uniform(20) == 0) {
+        case 1:
             EnemyFactory.initEnemySprite2(scene)
-            return;
-        }
-        
-        if (arc4random_uniform(20) == 0) {
+        case 2:
             EnemyFactory.initEnemySprite3(scene)
-            return;
+        case 3:
+            EnemyFactory.initEnemySprite4(scene)
+        default:break;
         }
         
-        if (arc4random_uniform(20) == 0) {
-            EnemyFactory.initEnemySprite4(scene)
-            return;
-        }
-
     }
 
     class func initNoDestroyEnemySprite(scene:SKScene) {
@@ -47,7 +45,7 @@ class EnemyFactory {
             return
         }
         
-        let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 10, 10))
+        let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 8, 8))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
         _sprite.userData!["ap"] = 12
@@ -150,8 +148,8 @@ class EnemyFactory {
         
         let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(CGRectGetMaxY(_frame) / 2, 50))
         _sprite.userData = [:]
-        _sprite.userData!["hp"] = 10
-        _sprite.userData!["ap"] = 35
+        _sprite.userData!["hp"] = 40
+        _sprite.userData!["ap"] = 40
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
