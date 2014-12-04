@@ -75,6 +75,12 @@ class PlayScene: SKScene {
     // MARK: touch
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
+        if (touches.count == 1) {
+            if let _touch: AnyObject = touches.anyObject(){
+                println("touch count \(_touch.tapCount)")
+            }
+        }
+        
         if self.mode == .Title {
             startGame()
             return
@@ -354,8 +360,7 @@ class PlayScene: SKScene {
         }
         
         
-        // CGAffineTransformMakeTranslation(<#tx: CGFloat#>, <#ty: CGFloat#>)
-        
+        // CGAffineTransformMakeTranslation()
         //_path2.bo
         // score
         var _scoreNode = childNodeWithName("score") as SKLabelNode?
