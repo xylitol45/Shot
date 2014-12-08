@@ -20,7 +20,7 @@ class EnemyFactory {
             return;
         }
         
-        let _no = arc4random_uniform(4)
+        let _no = arc4random_uniform(5)
         
         switch(_no) {
         case 0:
@@ -31,6 +31,8 @@ class EnemyFactory {
             EnemyFactory.initEnemySprite3(scene)
         case 3:
             EnemyFactory.initEnemySprite4(scene)
+        case 4:
+            EnemyFactory.initEnemySprite5(scene)
         default:break;
         }
         
@@ -49,6 +51,7 @@ class EnemyFactory {
         _sprite.userData = [:]
         _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
         _sprite.userData!["ap"] = 12
+        _sprite.userData!["score"] = 10
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -80,38 +83,6 @@ class EnemyFactory {
         
     }
     
-    class func initEnemySprite3(scene:SKScene) {
-        
-        let _frame = scene.frame
-        
-        
-        let _path = UIBezierPath()
-        _path.moveToPoint(CGPointMake(0, 0))
-        _path.addLineToPoint(CGPointMake(50,0))
-        _path.addLineToPoint(CGPointMake(0,50))
-        _path.addLineToPoint(CGPointMake(50,50))
-        _path.closePath()
-        
-        let _sprite = SKShapeNode(path: _path.CGPath)
-        _sprite.userData = [:]
-        _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
-        _sprite.fillColor = SKColor.whiteColor()
-        _sprite.strokeColor = SKColor.blackColor()
-        _sprite.name = "enemy"
-        _sprite.zPosition = 100
-        
-        _sprite.position = CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
-        
-        _sprite.runAction(
-            SKAction.sequence([
-                SKAction.moveToY(CGRectGetMidY(_frame) / 2, duration: 3),
-                SKAction.moveTo(
-                    arc4random_uniform(2) == 0 ? CGPointMake(-100, CGRectGetMidY(_frame)) : CGPointMake(CGRectGetMaxX(_frame)+100, CGRectGetMidY(_frame)), duration:  1),
-                SKAction.removeFromParent()]))
-        
-        scene.addChild(_sprite)
-    }
     
     class func initEnemySprite(scene:SKScene) {
         
@@ -128,6 +99,7 @@ class EnemyFactory {
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
         _sprite.userData!["ap"] = 450
+        _sprite.userData!["score"] = 10
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -137,7 +109,10 @@ class EnemyFactory {
             CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
         
         let _moveDown = SKAction.moveToY(-100, duration: 5)
-        _sprite.runAction(SKAction.sequence([_moveDown, SKAction.removeFromParent()]))
+        _sprite.runAction(
+            SKAction.sequence([_moveDown, SKAction.removeFromParent()])
+            )
+            
         
         scene.addChild(_sprite)
     }
@@ -150,6 +125,7 @@ class EnemyFactory {
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 40
         _sprite.userData!["ap"] = 40
+        _sprite.userData!["score"] = 200
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -169,6 +145,39 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    class func initEnemySprite3(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(50,0))
+        _path.addLineToPoint(CGPointMake(0,50))
+        _path.addLineToPoint(CGPointMake(50,50))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 450
+        _sprite.userData!["score"] = 100
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        _sprite.position = CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
+        
+        _sprite.runAction(
+            SKAction.sequence([
+                SKAction.moveToY(CGRectGetMidY(_frame) / 2, duration: 3),
+                SKAction.moveTo(
+                    arc4random_uniform(2) == 0 ? CGPointMake(-100, CGRectGetMidY(_frame)) : CGPointMake(CGRectGetMaxX(_frame)+100, CGRectGetMidY(_frame)), duration:  1),
+                SKAction.removeFromParent()]))
+        
+        scene.addChild(_sprite)
+    }
     
     class func initEnemySprite4(scene:SKScene) {
         
@@ -185,6 +194,7 @@ class EnemyFactory {
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
         _sprite.userData!["ap"] = 450
+        _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -206,6 +216,45 @@ class EnemyFactory {
                 SKAction.followPath(_circle, asOffset: true, orientToPath: false, duration: 1),
                 SKAction.moveToY(-100, duration:1),
                 SKAction.removeFromParent()]))
+        
+        scene.addChild(_sprite)
+    }
+    
+    class func initEnemySprite5(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(-10, -10))
+        _path.addLineToPoint(CGPointMake(10,-10))
+        _path.addLineToPoint(CGPointMake(10,10))
+        _path.addLineToPoint(CGPointMake(-10,10))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 450
+        _sprite.userData!["score"] = 10
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
+        
+        let _moveDown = SKAction.moveToY(-100, duration: 5)
+        _sprite.runAction(
+            SKAction.group([
+                SKAction.repeatActionForever(
+                    SKAction.sequence(
+                        [SKAction.scaleTo(5.0, duration:1),
+                            SKAction.scaleTo(1.0, duration: 1)])
+                ),
+                SKAction.sequence([_moveDown, SKAction.removeFromParent()])
+                ])
+        )
         
         scene.addChild(_sprite)
     }

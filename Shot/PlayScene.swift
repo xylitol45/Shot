@@ -166,6 +166,10 @@ class PlayScene: SKScene {
                 
                 phase++;
                 
+                if phase % 500 == 0 {
+                    changeSound()
+                }
+                
                 if let _node = childNodeWithName("phase") as SKLabelNode! {
                     _node.text = String(phase)
                 }
@@ -200,18 +204,19 @@ class PlayScene: SKScene {
             var _flg = false
             var _hp = (node.userData!["hp"] as Int)
             var _ap = (node.userData!["ap"] as Int)
+            var _enemyFrame = node.calculateAccumulatedFrame()
             
             // SKShapeNodeの場合はこちら
             // player
             // if node.intersectsNode(_player!){
                 
-           if CGRectIntersectsRect(node.frame, _playerFrame) {
+           if CGRectIntersectsRect(_enemyFrame, _playerFrame) {
                 
                 println(" player.frame \(_player!.frame)")
                 
                 //                _player.strokeColor = SKColor.redColor()
                 //                let colorAction = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0 , duration: 1)
-                self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)), scale:0.5)
+                self.initSparkSprite(CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame)), scale:0.5)
                 node.removeFromParent()
 //                NSLog("zan1 %d ap %d", self.zan, _ap)
                 
@@ -222,7 +227,7 @@ class PlayScene: SKScene {
                 
                 // 終了
                 if self.zan >= 1000 {
-                    self.initSparkSprite(CGPointMake(CGRectGetMidX(_player!.frame), CGRectGetMidY(_player!.frame)), scale: 1.0)
+                    self.initSparkSprite(CGPointMake(CGRectGetMidX(_playerFrame), CGRectGetMidY(_playerFrame)), scale: 1.0)
                     _player!.removeFromParent()
                     self.refreshScore()
                     
@@ -275,7 +280,7 @@ class PlayScene: SKScene {
             var _hitFlg = false
             self.enumerateChildNodesWithName("missile") {
                 node2, stop2 in
-                if CGRectIntersectsRect(node.frame, node2.frame) {
+                if CGRectIntersectsRect(_enemyFrame, node2.frame) {
                     node2.removeFromParent()
                     _hitFlg = true
                     stop2.memory = true
@@ -288,7 +293,7 @@ class PlayScene: SKScene {
                 if _hp > 0 {
                     node.userData!["hp"] = _hp
                 } else {
-                    self.score += 10
+                    self.score += (node.userData!["score"] as Int)
                     self.refreshScore()
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
                     node.removeFromParent()
@@ -313,8 +318,8 @@ class PlayScene: SKScene {
         
         // Fadeout
         if sound != nil {
-            if sound!.volume > 0.1 {
-                sound!.volume -= 0.1
+            if sound!.volume > 0.05 {
+                sound!.volume -= 0.05
                 NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
                 return
             }
@@ -341,8 +346,8 @@ class PlayScene: SKScene {
         sound!.numberOfLoops = -1
         sound!.play()
         
-        soundTimer =
-            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
+//        soundTimer =
+//            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
     
     }
     
@@ -552,6 +557,7 @@ class PlayScene: SKScene {
         _node.zPosition = 1000
         addChild(_node)
         
+        changeSound()
         
     }
     
