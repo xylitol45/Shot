@@ -170,6 +170,17 @@ class PlayScene: SKScene {
                     changeSound()
                 }
                 
+                if nextStage {
+                    nextStage = false
+                    if phase > 500 {
+                        self.zan -= 300
+                        if self.zan < 0 {
+                            self.zan = 0
+                        }
+                    }
+                }
+                
+                
                 if let _node = childNodeWithName("phase") as SKLabelNode! {
                     _node.text = String(phase)
                 }
@@ -305,6 +316,7 @@ class PlayScene: SKScene {
     }
     
     // MARK: sound
+    var nextStage = false
     var soundIndex = -1
     var soundPath = ["0", "1", "2", "3"]
     var soundTimer:NSTimer? = nil
@@ -345,6 +357,8 @@ class PlayScene: SKScene {
         sound!.volume = 1
         sound!.numberOfLoops = -1
         sound!.play()
+        
+        nextStage = true
         
 //        soundTimer =
 //            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)

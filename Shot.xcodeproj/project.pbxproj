@@ -37,6 +37,8 @@
 		0751B9D11A1CEF2E008472ED /* 6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0751B9CF1A1CEF2E008472ED /* 6.m4a */; };
 		075312F11A2F674900EE7037 /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075312F01A2F674900EE7037 /* EnemyFactory.swift */; };
 		075312F21A2F674900EE7037 /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075312F01A2F674900EE7037 /* EnemyFactory.swift */; };
+		076686401A37559E00D2E522 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0766863F1A37559E00D2E522 /* 0.m4a */; };
+		076686411A37559E00D2E522 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0766863F1A37559E00D2E522 /* 0.m4a */; };
 		077043E91A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
 		077043EA1A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
 		077043EC1A00F2280097B108 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 1.m4a */; };
@@ -47,8 +49,8 @@
 		077043F31A00F2B20097B108 /* 3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043F11A00F2B20097B108 /* 3.m4a */; };
 		078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078954FC1A14F75B00CAAA60 /* PlayScene.sks */; };
 		078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078954FC1A14F75B00CAAA60 /* PlayScene.sks */; };
-		0799962C1A360033009985BA /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0799962B1A360033009985BA /* 0.m4a */; };
-		0799962D1A360033009985BA /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0799962B1A360033009985BA /* 0.m4a */; };
+		0799962C1A360033009985BA /* 7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0799962B1A360033009985BA /* 7.m4a */; };
+		0799962D1A360033009985BA /* 7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0799962B1A360033009985BA /* 7.m4a */; };
 		07B3617D19FD5B7300FD332E /* hommage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07B3617C19FD5B7300FD332E /* hommage.mp3 */; };
 		07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07B3617C19FD5B7300FD332E /* hommage.mp3 */; };
 		07B7341319F939A0006C8205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7341219F939A0006C8205 /* AppDelegate.swift */; };
@@ -104,12 +106,13 @@
 		074F80531A1CF2D9008E02DC /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		0751B9CF1A1CEF2E008472ED /* 6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 6.m4a; sourceTree = "<group>"; };
 		075312F01A2F674900EE7037 /* EnemyFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyFactory.swift; sourceTree = "<group>"; };
+		0766863F1A37559E00D2E522 /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		077043EB1A00F2280097B108 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
 		077043EE1A00F2550097B108 /* 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.m4a; sourceTree = "<group>"; };
 		077043F11A00F2B20097B108 /* 3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3.m4a; sourceTree = "<group>"; };
 		078954FC1A14F75B00CAAA60 /* PlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayScene.sks; sourceTree = "<group>"; };
-		0799962B1A360033009985BA /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
+		0799962B1A360033009985BA /* 7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 7.m4a; sourceTree = "<group>"; };
 		07B3617C19FD5B7300FD332E /* hommage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hommage.mp3; sourceTree = "<group>"; };
 		07B7340D19F939A0006C8205 /* Shot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B7341119F939A0006C8205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -255,9 +258,10 @@
 				077043F11A00F2B20097B108 /* 3.m4a */,
 				071DE01219FEC25D0097DB51 /* 4.m4a */,
 				071DE00C19FEB81C0097DB51 /* 5.m4a */,
-				0799962B1A360033009985BA /* 0.m4a */,
+				0799962B1A360033009985BA /* 7.m4a */,
 				070325381A0FC27F00557588 /* プロジェクト39.m4a */,
 				0703253B1A0FC29D00557588 /* プロジェクト42 2.m4a */,
+				0766863F1A37559E00D2E522 /* 0.m4a */,
 				074F80531A1CF2D9008E02DC /* data.json */,
 			);
 			name = Resources;
@@ -372,12 +376,13 @@
 				072245761A13CF3B00848443 /* MyScene.sks in Resources */,
 				070325391A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				07B7342119F939A0006C8205 /* LaunchScreen.xib in Resources */,
+				076686401A37559E00D2E522 /* 0.m4a in Resources */,
 				07B7341E19F939A0006C8205 /* Images.xcassets in Resources */,
 				071DE00719FEB49D0097DB51 /* efg.m4a in Resources */,
 				07B7341519F939A0006C8205 /* GameScene.sks in Resources */,
 				0751B9D01A1CEF2E008472ED /* 6.m4a in Resources */,
 				071DE01319FEC25D0097DB51 /* 4.m4a in Resources */,
-				0799962C1A360033009985BA /* 0.m4a in Resources */,
+				0799962C1A360033009985BA /* 7.m4a in Resources */,
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
 				0703253C1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
@@ -407,12 +412,13 @@
 				078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				077043ED1A00F2280097B108 /* 1.m4a in Resources */,
 				071DE00B19FEB5710097DB51 /* asd.m4a in Resources */,
+				076686411A37559E00D2E522 /* 0.m4a in Resources */,
 				0703253A1A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
 				0751B9D11A1CEF2E008472ED /* 6.m4a in Resources */,
 				077043F31A00F2B20097B108 /* 3.m4a in Resources */,
 				074530CF1A12996400F249EC /* spark.sks in Resources */,
 				07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */,
-				0799962D1A360033009985BA /* 0.m4a in Resources */,
+				0799962D1A360033009985BA /* 7.m4a in Resources */,
 				07B7343E19F93A43006C8205 /* Images.xcassets in Resources */,
 				07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */,
 				071DE01419FEC25D0097DB51 /* 4.m4a in Resources */,
