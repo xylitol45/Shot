@@ -45,10 +45,15 @@ class PlayScene: SKScene {
     var score = 0
     var zan = 0
     var phase = 0
+    var stage = 1
     var playerCollision = false
     
     var highscores = [NSDictionary]()
-    
+    var nextStage = false
+    var soundIndex = -1
+    var soundPath = ["0", "1", "2", "3"]
+    var soundTimer:NSTimer? = nil
+
     
     // MARK: クラスメソッド
     // 0.0-1.0
@@ -62,15 +67,9 @@ class PlayScene: SKScene {
     
     // MARK: 開始
     override func didMoveToView(view: SKView) {
-        
-        
         readData()
-        
-        
         startTitle()
     }
-
-    
     
     // MARK: touch
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -172,11 +171,36 @@ class PlayScene: SKScene {
                 
                 if nextStage {
                     nextStage = false
+                    stage++
+                    var _y = blockHeight() * 6
+                    let _label = SKLabelNode(text: "stage \(stage)")
+                    _label.position = CGPointMake(CGRectGetMidX(frame), _y)
+                    _label.fontColor = SKColor.blackColor()
+                    _label.zPosition = 1000
+                    _label.runAction(SKAction.sequence([
+                        SKAction.waitForDuration(2.0),SKAction.removeFromParent()
+                        ]))
+                    addChild(_label)
+
+                    
                     if phase > 500 {
                         self.zan -= 300
                         if self.zan < 0 {
                             self.zan = 0
                         }
+                        
+                        _y -= 100
+                        let _label = SKLabelNode(text: "30% recovery")
+                        _label.position = CGPointMake(CGRectGetMidX(frame), _y)
+                        _label.fontColor = SKColor.blackColor()
+                        _label.zPosition = 1000
+                        _label.runAction(SKAction.sequence([
+                            SKAction.waitForDuration(2.0),SKAction.removeFromParent()
+                            ]))
+                        addChild(_label)
+
+                        
+                    
                     }
                 }
                 
@@ -304,9 +328,23 @@ class PlayScene: SKScene {
                 if _hp > 0 {
                     node.userData!["hp"] = _hp
                 } else {
-                    self.score += (node.userData!["score"] as Int)
+                    let _score = node.userData!["score"] as Int
+                    self.score += _score
                     self.refreshScore()
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
+                    
+                    let _scoreNode = SKLabelNode(text: "\(_score)")
+                    _scoreNode.zPosition = 1000
+                    _scoreNode.position =
+                        CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame))
+                    _scoreNode.color = SKColor.whiteColor()
+                    _scoreNode.fontSize = 14
+                    _scoreNode.runAction(SKAction.sequence([
+                        SKAction.waitForDuration(0.8), SKAction.removeFromParent()
+                        ]))
+                    self.addChild(_scoreNode)
+                    
+                    
                     node.removeFromParent()
                 }
                 // stop.memory = true
@@ -316,10 +354,6 @@ class PlayScene: SKScene {
     }
     
     // MARK: sound
-    var nextStage = false
-    var soundIndex = -1
-    var soundPath = ["0", "1", "2", "3"]
-    var soundTimer:NSTimer? = nil
     func changeSound() {
         
         //  タイトルでは流さない
@@ -530,6 +564,8 @@ class PlayScene: SKScene {
         
         zan = 0
         score = 0
+        stage = 0
+        nextStage = false
         playerCollision = false
         
         refreshScore()
