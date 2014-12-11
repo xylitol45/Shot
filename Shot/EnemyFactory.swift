@@ -10,7 +10,7 @@ import SpriteKit
 
 class EnemyFactory {
     
-    class func initEnemy(scene:SKScene) {
+    class func initEnemy(scene:SKScene, stage:Int) {
 
         if (arc4random_uniform(4) == 0) {
             EnemyFactory.initNoDestroyEnemySprite(scene)
@@ -21,6 +21,7 @@ class EnemyFactory {
         }
         
         let _no = arc4random_uniform(8)
+
         
         switch(_no) {
         case 0:
@@ -44,6 +45,7 @@ class EnemyFactory {
         
     }
 
+    // MARK: 敵弾
     class func initNoDestroyEnemySprite(scene:SKScene) {
         
         let _frame = scene.frame
@@ -89,6 +91,66 @@ class EnemyFactory {
         
     }
     
+    // 散弾２
+    class func initNoDestroyEnemySprite2(scene:SKScene, position:CGPoint) {
+        
+        let _frame = scene.frame
+        
+        let _player = scene.childNodeWithName("player")
+        if _player == nil {
+            return
+        }
+        let _playerFrame = _player!.frame
+        
+        let _xx = _playerFrame.origin.x - position.x
+        let _yy = _playerFrame.origin.y - position.y
+        
+        var dx:CGFloat = 0, dy:CGFloat = 0
+        
+        var _move:SKAction? = nil
+        
+        if (_xx == 0 || _yy == 0) {
+            return
+        }
+        
+        if (_xx == 0) {
+            _move = SKAction.moveByX(0, y: _yy > 0 ? 100 : -100, duration: 0.5)
+        } else if (_yy == 0) {
+            _move = SKAction.moveByX( _xx > 0 ? 100 : -100, y:0, duration: 0.5)
+        } else if abs(_xx) > abs(_yy) {
+            _move = SKAction.moveByX( _xx > 0 ? 100 : -100, y:_yy / abs(_xx) * 100, duration: 0.5)
+        } else {
+            _move = SKAction.moveByX( _xx / abs(_yy) * 100, y: _yy > 0 ? 100 : -100, duration: 0.5)
+        }
+        
+        
+        let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 8, 8))
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
+        _sprite.userData!["ap"] = 10
+        _sprite.userData!["score"] = 0
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 50
+        _sprite.position = position
+        
+        _sprite.runAction(SKAction.repeatActionForever(SKAction.sequence([
+            _move!,
+            SKAction.runBlock({
+                
+                
+                if _sprite.frame.origin.x < 0 || _sprite.frame.origin.x > CGRectGetMaxX(_frame)
+                    ||  _sprite.frame.origin.y < 0 || _sprite.frame.origin.y > CGRectGetMaxY(_frame){
+                        _sprite.removeFromParent()
+                }
+            })
+        ])))
+        
+        scene.addChild(_sprite)
+        
+    }
+
     // 四角
     class func initEnemySprite(scene:SKScene) {
         
@@ -114,7 +176,7 @@ class EnemyFactory {
         _sprite.position =
             CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
         
-        let _moveDown = SKAction.moveToY(-100, duration: 5)
+        let _moveDown = SKAction.moveToY(-100, duration: 4)
         _sprite.runAction(
             SKAction.sequence([_moveDown, SKAction.removeFromParent()])
             )
@@ -222,6 +284,7 @@ class EnemyFactory {
         _sprite.runAction(
             SKAction.sequence([
                 SKAction.moveToY(CGRectGetMidY(_frame) / 2, duration: 3),
+                
                 SKAction.followPath(_circle, asOffset: true, orientToPath: false, duration: 1),
                 SKAction.moveToY(-100, duration:1),
                 SKAction.removeFromParent()]))
@@ -260,6 +323,12 @@ class EnemyFactory {
                 SKAction.repeatActionForever(
                     SKAction.sequence(
                         [SKAction.scaleTo(5.0, duration:1),
+                            
+                            SKAction.runBlock({
+                                EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
+                            }),
+                            
+                            
                             SKAction.scaleTo(1.0, duration: 1)])
                 ),
                 SKAction.sequence([_moveDown, SKAction.removeFromParent()])
@@ -294,27 +363,24 @@ class EnemyFactory {
         _sprite.position =
             CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+40)
         
-        let _moveDown = SKAction.moveToY(-100, duration: 2)
+        let _flg = arc4random_uniform(2) == 1 ? true : false
         
-        var _x = CGRectGetMaxX(scene.frame) / 2
-        if arc4random_uniform(2) == 0 {
-            _x *= -1
-        }
-        
-        let _moveSide = SKAction.repeatActionForever(
+        _sprite.runAction(SKAction.repeatActionForever(
             SKAction.sequence([
-                SKAction.moveByX(_x , y: 0, duration: 1),
-                SKAction.moveByX(_x * -1, y: 0, duration: 1),
+                SKAction.moveTo(
+                    CGPointMake(_flg ? 0 : CGRectGetMaxX(_frame),CGFloat(arc4random_uniform(UInt32(CGRectGetMaxY(_frame))))), duration: 1),
+                SKAction.moveTo(
+                    CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame)))), 0), duration: 1),
+                
+                SKAction.moveTo(
+                    CGPointMake(!_flg ? 0 : CGRectGetMaxX(_frame), CGFloat(arc4random_uniform(UInt32(CGRectGetMaxY(_frame))))), duration: 1),
+                SKAction.moveTo(
+                    CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame)))), CGRectGetMaxY(_frame)), duration: 1),
+                
+                
                 ])
+            )
         )
-        
-        _sprite.runAction(
-            SKAction.group([
-                _moveSide,
-                SKAction.sequence([_moveDown, SKAction.removeFromParent()])
-                ])
-        )
-        
         scene.addChild(_sprite)
     }
     
@@ -393,6 +459,12 @@ class EnemyFactory {
             let _y = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxY(_frame))))
             _movePath.append(
                 SKAction.moveTo(CGPointMake(_x, _y), duration: 1)
+            )
+            _movePath.append(
+                SKAction.runBlock({
+                    EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
+                })
+
             )
         }
         _movePath.append(SKAction.moveToY(-100, duration: 1))

@@ -53,14 +53,14 @@ class PlayScene: SKScene {
     var soundIndex = -1
     var soundPath = ["0", "1", "2", "3"]
     var soundTimer:NSTimer? = nil
-
+    
     
     // MARK: クラスメソッド
     // 0.0-1.0
     class func randomCGFloat() -> CGFloat {
         return CGFloat(arc4random()) /  CGFloat(UInt32.max)
     }
-
+    
     class func noDestoroyHp() -> Int {
         return 999999
     }
@@ -74,10 +74,8 @@ class PlayScene: SKScene {
     // MARK: touch
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
-        if (touches.count == 1) {
-            if let _touch: AnyObject = touches.anyObject(){
-                println("touch count \(_touch.tapCount)")
-            }
+        if (touches.count != 1) {
+            return
         }
         
         if self.mode == .Title {
@@ -90,22 +88,26 @@ class PlayScene: SKScene {
             return
         }
         
-        let _player = self.childNodeWithName("player")
+        // 以下、ゲーム中
+        let _touch: AnyObject = touches.anyObject()!
         
+        let _player = self.childNodeWithName("player")
         if _player == nil {
             return
         }
         
-        if (touches.count == 1) {
-            let _touch:AnyObject = touches.anyObject()!
-            let _location = _touch.locationInNode(self)
-            
-            if CGRectContainsPoint(_player!.frame, _location) {
-                preLocation = _location
-            }
-            
+        if _touch.tapCount == 3 {
+            changePlayer()
+            return
+        }
+        
+        let _location = _touch.locationInNode(self)
+        
+        if CGRectContainsPoint(_player!.frame, _location) {
             preLocation = _location
         }
+        
+        preLocation = _location
         
     }
     
@@ -162,7 +164,7 @@ class PlayScene: SKScene {
             
             if mode == .Game {
                 
-                phase++;
+                phase++
                 
                 if phase % 500 == 0 {
                     changeSound()
@@ -178,10 +180,10 @@ class PlayScene: SKScene {
                     _label.fontColor = SKColor.blackColor()
                     _label.zPosition = 1000
                     _label.runAction(SKAction.sequence([
-                        SKAction.waitForDuration(2.0),SKAction.removeFromParent()
+                        SKAction.waitForDuration(3.0),SKAction.removeFromParent()
                         ]))
                     addChild(_label)
-
+                    
                     
                     if phase > 500 {
                         self.zan -= 30
@@ -197,9 +199,11 @@ class PlayScene: SKScene {
                         _label.fontColor = SKColor.blackColor()
                         _label.zPosition = 1000
                         _label.runAction(SKAction.sequence([
-                            SKAction.waitForDuration(2.0),SKAction.removeFromParent()
+                            SKAction.waitForDuration(3.0),SKAction.removeFromParent()
                             ]))
                         addChild(_label)
+                        
+                        refreshScore()
                     }
                 }
                 
@@ -207,14 +211,12 @@ class PlayScene: SKScene {
                 if let _node = childNodeWithName("phase") as SKLabelNode! {
                     _node.text = String(phase)
                 }
-            
-                EnemyFactory.initEnemy(self)
+                
+                EnemyFactory.initEnemy(self, stage: stage)
                 
                 
-                if _player != nil {
-                    initMissileSprite(_player!.frame)
-                }
-            
+                initMissileSprite()
+                
             }
             
             lastUpdateTime = currentTime
@@ -224,6 +226,11 @@ class PlayScene: SKScene {
     
     // MARK: 当たり判定
     func checkCollision() {
+        
+        if mode != .Game {
+            return
+        }
+        
         let _player = childNodeWithName("player") as SKNode?
         if _player == nil {
             return
@@ -243,8 +250,8 @@ class PlayScene: SKScene {
             // SKShapeNodeの場合はこちら
             // player
             // if node.intersectsNode(_player!){
-                
-           if CGRectIntersectsRect(_enemyFrame, _playerFrame) {
+            
+            if CGRectIntersectsRect(_enemyFrame, _playerFrame) {
                 
                 println(" player.frame \(_player!.frame)")
                 
@@ -252,7 +259,7 @@ class PlayScene: SKScene {
                 //                let colorAction = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0 , duration: 1)
                 self.initSparkSprite(CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame)), scale:0.5)
                 node.removeFromParent()
-//                NSLog("zan1 %d ap %d", self.zan, _ap)
+                //                NSLog("zan1 %d ap %d", self.zan, _ap)
                 
                 // 衝突中はダメージ1.5倍
                 self.zan += Int(Float(_ap) * Float(self.playerCollision ? 1.5 : 1))
@@ -282,10 +289,10 @@ class PlayScene: SKScene {
                                 
                                 for _node in _player.children as [SKShapeNode] {
                                     _node.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
-
+                                    
                                 }
                                 
-//                                _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
+                                //                                _player.fillColor = UIColor(red:1.0, green: _f, blue: _f, alpha: 1)
                             }
                             
                         });
@@ -293,12 +300,12 @@ class PlayScene: SKScene {
                     }
                     dispatch_async(dispatch_get_main_queue(), {
                         if let _player = self.childNodeWithName("player") as SKNode? {
-//                            _player.fillColor = UIColor.whiteColor()
+                            //                            _player.fillColor = UIColor.whiteColor()
                             for _node in _player.children as [SKShapeNode] {
                                 _node.fillColor = SKColor.whiteColor()
                                 
                             }
-
+                            
                         }
                         self.playerCollision = false
                     });
@@ -337,9 +344,9 @@ class PlayScene: SKScene {
                     _scoreNode.position =
                         CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame))
                     _scoreNode.color = SKColor.whiteColor()
-                    _scoreNode.fontSize = 14
+                    _scoreNode.fontSize = 16
                     _scoreNode.runAction(SKAction.sequence([
-                        SKAction.waitForDuration(0.8), SKAction.removeFromParent()
+                        SKAction.waitForDuration(1.0), SKAction.removeFromParent()
                         ]))
                     self.addChild(_scoreNode)
                     
@@ -372,7 +379,7 @@ class PlayScene: SKScene {
         
         // 今の曲を止める
         soundStop()
-
+        
         // ゲームオーバでは次曲なし
         if mode == .EndGame {
             return
@@ -392,10 +399,6 @@ class PlayScene: SKScene {
         sound!.play()
         
         nextStage = true
-        
-//        soundTimer =
-//            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
-    
     }
     
     func soundStop() {
@@ -520,8 +523,8 @@ class PlayScene: SKScene {
         for _row in self.highscores {
             
             println(_row["date"])
-//            let _dateString = _row["date"] as NSDate!
-
+            //            let _dateString = _row["date"] as NSDate!
+            
             
             let _str = String(_index+1) + ". "  + String(_row["score"] as Int)
             let _scoreNode = SKLabelNode(text:_str)
@@ -532,7 +535,7 @@ class PlayScene: SKScene {
             _scoreNode.horizontalAlignmentMode = .Left
             addChild(_scoreNode)
             _index++
-        
+            
         }
         
         zan = 0
@@ -540,7 +543,7 @@ class PlayScene: SKScene {
         phase = 0
         
         refreshScore()
-
+        
         soundStop()
     }
     
@@ -550,13 +553,13 @@ class PlayScene: SKScene {
         
         enumerateChildNodesWithName("title") {
             node, stop in
-                node.removeFromParent()
+            node.removeFromParent()
         }
-
+        
         
         enumerateChildNodesWithName("enemy") {
             node, stop in
-                node.removeFromParent()
+            node.removeFromParent()
         }
         
         initPlayer()
@@ -564,6 +567,7 @@ class PlayScene: SKScene {
         zan = 0
         score = 0
         stage = 0
+        playerMode = 0
         nextStage = false
         playerCollision = false
         
@@ -585,7 +589,7 @@ class PlayScene: SKScene {
         
         let _fmt = NSDateFormatter()
         
-//        highscores.append(["date":_fmt.stringFromDate(NSDate()),  "score":score]);
+        //        highscores.append(["date":_fmt.stringFromDate(NSDate()),  "score":score]);
         highscores.append(["date":NSDate(), "score":score]);
         highscores = highscores.sorted {
             (dictOne, dictTwo) -> Bool in
@@ -615,11 +619,11 @@ class PlayScene: SKScene {
         _scoreNode.text = String(self.score)
         
         let _zanNode = childNodeWithName("zan")! as SKLabelNode
-//        _zanNode.text = String(format: "%.1f%%", Float(self.zan) * 0.1)
+        //        _zanNode.text = String(format: "%.1f%%", Float(self.zan) * 0.1)
         _zanNode.text = "\(self.zan)%"
-//        NSLog("zan %d %.1f", zan, Float(self.zan) * 0.1)
+        //        NSLog("zan %d %.1f", zan, Float(self.zan) * 0.1)
         // 逆スラッシュは option + ¥
-//        println("score \(self.score)")
+        //        println("score \(self.score)")
         
     }
     
@@ -630,10 +634,10 @@ class PlayScene: SKScene {
         let _data:NSData! = _handle.readDataToEndOfFile()
         
         let _json =
-            NSJSONSerialization.JSONObjectWithData(_data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary!
+        NSJSONSerialization.JSONObjectWithData(_data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary!
         
         let _enemy = _json.objectForKey("enemy") as [NSDictionary]!
-
+        
         for _row in _enemy {
             println(_row.objectForKey("ap"))
             println(_row.objectForKey("hp"))
@@ -644,7 +648,7 @@ class PlayScene: SKScene {
         return CGRectGetMaxY(frame) / 8
     }
     
-    // MARK: sprite
+    // MARK: スプライト
     func initPlayer() {
         
         // 存在していたら削除
@@ -652,16 +656,14 @@ class PlayScene: SKScene {
             _player.removeFromParent()
         }
         
-        
-        
         // 自機
         let _path = UIBezierPath()
         _path.moveToPoint(CGPointMake(0, 0))
         _path.addLineToPoint(CGPointMake(15, 0))
         _path.addLineToPoint(CGPointMake(7,31))
         
-//        _path.addLineToPoint(CGPointMake(31,0))
-//        _path.addLineToPoint(CGPointMake(15,63))
+        //        _path.addLineToPoint(CGPointMake(31,0))
+        //        _path.addLineToPoint(CGPointMake(15,63))
         _path.closePath()
         
         let _sub = SKShapeNode(path: _path.CGPath)
@@ -670,8 +672,8 @@ class PlayScene: SKScene {
         _sub.position = CGPointMake(0,0)
         
         let _sub2 = _sub.copy() as SKShapeNode
-        _sub2.position = CGPointMake(16, 0)
-        
+        _sub2.name = "right"
+        _sub2.position = CGPointMake(15, 0)
         
         player = SKNode()
         
@@ -682,36 +684,67 @@ class PlayScene: SKScene {
         player?.zPosition = 100
         
         
-//        player?.fillColor = SKColor.whiteColor()
-//        player?.strokeColor = SKColor.blackColor()
+        //        player?.fillColor = SKColor.whiteColor()
+        //        player?.strokeColor = SKColor.blackColor()
         
         addChild(player!)
     }
     
-    func initMissileSprite(rect:CGRect) {
+    
+    func initMissileSprite() {
         
-        for i in 0...1 {
-            
-            let _path = UIBezierPath()
-            _path.moveToPoint(CGPointMake(0, 0))
-            _path.addLineToPoint(CGPointMake(0,7))
-            
-            let _missile = SKShapeNode(path: _path.CGPath)
-            _missile.name = "missile"
-            _missile.strokeColor = SKColor.blackColor()
-            _missile.position =
-                CGPointMake(rect.origin.x + 7 + (CGFloat(i)*16), rect.origin.y + 32)
-            
-            addChild(_missile)
-            
-            let _moveUp = SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1)
-            
-            let _sequence = SKAction.sequence([_moveUp, SKAction.removeFromParent()])
-            
-            _missile.runAction(_sequence)
-            
+        if playerMode == 1 {
+            return
         }
         
+        let _player = childNodeWithName("player")
+        if _player == nil {
+            return
+        }
+        
+        let _rect = _player!.frame
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(0,7))
+        
+        let _missile = SKShapeNode(path: _path.CGPath)
+        _missile.name = "missile"
+        _missile.strokeColor = SKColor.blackColor()
+        
+        
+        let _clone = _missile.copy() as SKShapeNode
+        _clone.position =
+            CGPointMake(_rect.origin.x + 7, _rect.origin.y + 32)
+        _clone.runAction(SKAction.sequence([
+            SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1),
+            SKAction.removeFromParent()
+            ]))
+        addChild(_clone)
+        
+        if playerMode == 0 {
+            // 上下
+            let _clone2 = _missile.copy() as SKShapeNode
+            _clone2.position =
+                CGPointMake(_rect.origin.x + 7 + 16, _rect.origin.y + 32)
+            _clone2.runAction(SKAction.sequence([
+                SKAction.moveByX(0, y: CGRectGetMaxY(frame), duration: 1),
+                SKAction.removeFromParent()
+                ]))
+            addChild(_clone2)
+        } else {
+            
+            let _clone2 = _missile.copy() as SKShapeNode
+            _clone2.position =
+                CGPointMake(_rect.origin.x + 7, _rect.origin.y - (32+7))
+            
+            _clone2.runAction(SKAction.sequence([
+                SKAction.moveByX(0, y: -CGRectGetMaxY(frame), duration: 1),
+                SKAction.removeFromParent()
+                ]))
+            
+            addChild(_clone2)
+        }
     }
     
     
@@ -736,10 +769,10 @@ class PlayScene: SKScene {
     
     func initStarSprite() {
         
+        
         if (arc4random_uniform(5) != 0) {
             return
         }
-        
         
         for _ in 1...10 {
             
@@ -767,5 +800,40 @@ class PlayScene: SKScene {
             addChild(_node)
             
         }
+    }
+    
+    // MARK:
+    var playerMode = 0
+    func changePlayer() {
+        
+        // 開始直後の誤動作防止
+        if phase < 10 {
+            return
+        }
+        
+        
+        if playerMode == 1 {
+            return
+        }
+        
+        let _player = childNodeWithName("player")
+        if _player == nil {
+            return
+        }
+        
+        let _right = _player!.childNodeWithName("right")
+        if _right == nil {
+            return
+        }
+        
+        let _nextMode = playerMode == 0 ? 2 : 0
+        self.playerMode = 1
+        _right!.runAction(SKAction.sequence([
+            SKAction.rotateByAngle(CGFloat(-M_PI), duration: 0.2),
+            SKAction.runBlock({
+                self.playerMode = _nextMode
+            })
+            ]))
+        
     }
 }
