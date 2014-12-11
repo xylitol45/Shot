@@ -158,7 +158,6 @@ class PlayScene: SKScene {
         // 定期的処理
         if (currentTime - lastUpdateTime) > 0.1 {
             
-            
             initStarSprite()
             
             if mode == .Game {
@@ -169,6 +168,7 @@ class PlayScene: SKScene {
                     changeSound()
                 }
                 
+                // 次のステージ
                 if nextStage {
                     nextStage = false
                     stage++
@@ -184,10 +184,12 @@ class PlayScene: SKScene {
 
                     
                     if phase > 500 {
-                        self.zan -= 300
+                        self.zan -= 30
                         if self.zan < 0 {
                             self.zan = 0
                         }
+                        
+                        self.score += 5000
                         
                         _y -= 100
                         let _label = SKLabelNode(text: "30% recovery")
@@ -198,9 +200,6 @@ class PlayScene: SKScene {
                             SKAction.waitForDuration(2.0),SKAction.removeFromParent()
                             ]))
                         addChild(_label)
-
-                        
-                    
                     }
                 }
                 
@@ -261,7 +260,7 @@ class PlayScene: SKScene {
                 //NSLog("zan2 %d ap %d", self.zan, _ap)
                 
                 // 終了
-                if self.zan >= 1000 {
+                if self.zan >= 100 {
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(_playerFrame), CGRectGetMidY(_playerFrame)), scale: 1.0)
                     _player!.removeFromParent()
                     self.refreshScore()
@@ -450,7 +449,7 @@ class PlayScene: SKScene {
         // zan
         var _zanNode = childNodeWithName("zan") as SKLabelNode?
         if _zanNode == nil {
-            _zanNode = SKLabelNode(text: "0.0%")
+            _zanNode = SKLabelNode(text: "0%")
             _zanNode!.name="zan"
             _zanNode!.position = CGPointMake(CGRectGetMaxX(frame)-50,  CGRectGetMaxY(self.frame)-50)
             _zanNode!.fontColor=SKColor.blackColor()
@@ -616,11 +615,11 @@ class PlayScene: SKScene {
         _scoreNode.text = String(self.score)
         
         let _zanNode = childNodeWithName("zan")! as SKLabelNode
-        _zanNode.text = String(format: "%.1f%%", Float(self.zan) * 0.1)
-        
-        NSLog("zan %d %.1f", zan, Float(self.zan) * 0.1)
+//        _zanNode.text = String(format: "%.1f%%", Float(self.zan) * 0.1)
+        _zanNode.text = "\(self.zan)%"
+//        NSLog("zan %d %.1f", zan, Float(self.zan) * 0.1)
         // 逆スラッシュは option + ¥
-        println("score \(self.score)")
+//        println("score \(self.score)")
         
     }
     

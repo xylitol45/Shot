@@ -56,8 +56,8 @@ class EnemyFactory {
         let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 8, 8))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
-        _sprite.userData!["ap"] = 12
-        _sprite.userData!["score"] = 10
+        _sprite.userData!["ap"] = 10
+        _sprite.userData!["score"] = 0
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -89,7 +89,7 @@ class EnemyFactory {
         
     }
     
-    
+    // 四角
     class func initEnemySprite(scene:SKScene) {
         
         let _frame = scene.frame
@@ -104,8 +104,8 @@ class EnemyFactory {
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
-        _sprite.userData!["score"] = 10
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -123,6 +123,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // 楕円
     class func initEnemySprite2(scene:SKScene) {
         
         let _frame = scene.frame
@@ -130,8 +131,8 @@ class EnemyFactory {
         let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(CGRectGetMaxY(_frame) / 2, 50))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 40
-        _sprite.userData!["ap"] = 40
-        _sprite.userData!["score"] = 200
+        _sprite.userData!["ap"] = 50
+        _sprite.userData!["score"] = 1000
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -151,6 +152,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // 三角２つ
     class func initEnemySprite3(scene:SKScene) {
         
         let _frame = scene.frame
@@ -166,7 +168,7 @@ class EnemyFactory {
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
+        _sprite.userData!["ap"] = 25
         _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
@@ -185,6 +187,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // 三角２つ
     class func initEnemySprite4(scene:SKScene) {
         
         let _frame = scene.frame
@@ -199,7 +202,7 @@ class EnemyFactory {
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
+        _sprite.userData!["ap"] = 25
         _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
@@ -226,6 +229,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // ズーム
     class func initEnemySprite5(scene:SKScene) {
         
         let _frame = scene.frame
@@ -240,8 +244,8 @@ class EnemyFactory {
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
-        _sprite.userData!["score"] = 10
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
@@ -265,6 +269,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // 菱形
     class func initEnemySprite6(scene:SKScene) {
         
         let _frame = scene.frame
@@ -279,7 +284,7 @@ class EnemyFactory {
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
+        _sprite.userData!["ap"] = 25
         _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
@@ -313,6 +318,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
+    // ３つ
     class func initEnemySprite7(scene:SKScene) {
         
         let _frame = scene.frame
@@ -329,8 +335,8 @@ class EnemyFactory {
             
             let _sprite = SKShapeNode(path: _path.CGPath)
             _sprite.userData = [:]
-            _sprite.userData!["hp"] = 4
-            _sprite.userData!["ap"] = 450
+            _sprite.userData!["hp"] = 2
+            _sprite.userData!["ap"] = 25
             _sprite.userData!["score"] = 100
             _sprite.fillColor = SKColor.whiteColor()
             _sprite.strokeColor = SKColor.blackColor()
@@ -354,11 +360,10 @@ class EnemyFactory {
         
     }
 
-    
+    // 丸
     class func initEnemySprite8(scene:SKScene) {
         
         let _frame = scene.frame
-        
         
         let _path = UIBezierPath()
         _path.moveToPoint(CGPointMake(0, 0))
@@ -370,7 +375,7 @@ class EnemyFactory {
         let _sprite = SKShapeNode(ellipseOfSize:CGSizeMake(40, 40))
         _sprite.userData = [:]
         _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 450
+        _sprite.userData!["ap"] = 25
         _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
