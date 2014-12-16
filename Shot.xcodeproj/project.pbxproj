@@ -41,8 +41,8 @@
 		076686411A37559E00D2E522 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0766863F1A37559E00D2E522 /* 0.m4a */; };
 		077043E91A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
 		077043EA1A00EBFF0097B108 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077043E81A00EBFF0097B108 /* TitleScene.swift */; };
-		077043EC1A00F2280097B108 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 1.m4a */; };
-		077043ED1A00F2280097B108 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 1.m4a */; };
+		077043EC1A00F2280097B108 /* 8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 8.m4a */; };
+		077043ED1A00F2280097B108 /* 8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EB1A00F2280097B108 /* 8.m4a */; };
 		077043EF1A00F2550097B108 /* 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EE1A00F2550097B108 /* 2.m4a */; };
 		077043F01A00F2550097B108 /* 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043EE1A00F2550097B108 /* 2.m4a */; };
 		077043F21A00F2B20097B108 /* 3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 077043F11A00F2B20097B108 /* 3.m4a */; };
@@ -76,6 +76,8 @@
 		07BFCE3A19FB6C9700B0342A /* SKPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3819FB6C9700B0342A /* SKPlayScene.swift */; };
 		07BFCE3F19FB797F00B0342A /* SKHeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */; };
 		07BFCE4019FB797F00B0342A /* SKHeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */; };
+		07D21DC21A4097100032E777 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D21DC11A4097100032E777 /* 1.m4a */; };
+		07D21DC31A4097100032E777 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D21DC11A4097100032E777 /* 1.m4a */; };
 		07DC2DF819FBC4C700512340 /* SKGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */; };
 		07DC2DF919FBC4C700512340 /* SKGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */; };
 /* End PBXBuildFile section */
@@ -108,7 +110,7 @@
 		075312F01A2F674900EE7037 /* EnemyFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyFactory.swift; sourceTree = "<group>"; };
 		0766863F1A37559E00D2E522 /* 0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.m4a; sourceTree = "<group>"; };
 		077043E81A00EBFF0097B108 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
-		077043EB1A00F2280097B108 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
+		077043EB1A00F2280097B108 /* 8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 8.m4a; sourceTree = "<group>"; };
 		077043EE1A00F2550097B108 /* 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.m4a; sourceTree = "<group>"; };
 		077043F11A00F2B20097B108 /* 3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3.m4a; sourceTree = "<group>"; };
 		078954FC1A14F75B00CAAA60 /* PlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayScene.sks; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		07BFCE3519FB65FD00B0342A /* SKTitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTitleScene.swift; sourceTree = "<group>"; };
 		07BFCE3819FB6C9700B0342A /* SKPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPlayScene.swift; sourceTree = "<group>"; };
 		07BFCE3E19FB797F00B0342A /* SKHeroNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHeroNode.swift; sourceTree = "<group>"; };
+		07D21DC11A4097100032E777 /* 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.m4a; sourceTree = "<group>"; };
 		07DC2DF719FBC4C700512340 /* SKGameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKGameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,12 +256,13 @@
 				071DE00619FEB49D0097DB51 /* efg.m4a */,
 				071DE00919FEB5710097DB51 /* asd.m4a */,
 				0751B9CF1A1CEF2E008472ED /* 6.m4a */,
-				077043EB1A00F2280097B108 /* 1.m4a */,
+				077043EB1A00F2280097B108 /* 8.m4a */,
 				077043EE1A00F2550097B108 /* 2.m4a */,
 				077043F11A00F2B20097B108 /* 3.m4a */,
 				071DE01219FEC25D0097DB51 /* 4.m4a */,
 				071DE00C19FEB81C0097DB51 /* 5.m4a */,
 				0799962B1A360033009985BA /* 7.m4a */,
+				07D21DC11A4097100032E777 /* 1.m4a */,
 				070325381A0FC27F00557588 /* プロジェクト39.m4a */,
 				0703253B1A0FC29D00557588 /* プロジェクト42 2.m4a */,
 				0766863F1A37559E00D2E522 /* 0.m4a */,
@@ -386,10 +390,11 @@
 				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
 				0703253C1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
+				07D21DC21A4097100032E777 /* 1.m4a in Resources */,
 				074F80541A1CF2D9008E02DC /* data.json in Resources */,
 				071DE00A19FEB5710097DB51 /* asd.m4a in Resources */,
 				07B3617D19FD5B7300FD332E /* hommage.mp3 in Resources */,
-				077043EC1A00F2280097B108 /* 1.m4a in Resources */,
+				077043EC1A00F2280097B108 /* 8.m4a in Resources */,
 				078954FD1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
 				073B664019FAB6D000C09008 /* spark.png in Resources */,
 				071DE00D19FEB81C0097DB51 /* 5.m4a in Resources */,
@@ -410,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078954FE1A14F75B00CAAA60 /* PlayScene.sks in Resources */,
-				077043ED1A00F2280097B108 /* 1.m4a in Resources */,
+				077043ED1A00F2280097B108 /* 8.m4a in Resources */,
 				071DE00B19FEB5710097DB51 /* asd.m4a in Resources */,
 				076686411A37559E00D2E522 /* 0.m4a in Resources */,
 				0703253A1A0FC27F00557588 /* プロジェクト39.m4a in Resources */,
@@ -422,6 +427,7 @@
 				07B7343E19F93A43006C8205 /* Images.xcassets in Resources */,
 				07B3617E19FD5B7300FD332E /* hommage.mp3 in Resources */,
 				071DE01419FEC25D0097DB51 /* 4.m4a in Resources */,
+				07D21DC31A4097100032E777 /* 1.m4a in Resources */,
 				074F80551A1CF2D9008E02DC /* data.json in Resources */,
 				073B664119FAB6D000C09008 /* spark.png in Resources */,
 				071DE00E19FEB81C0097DB51 /* 5.m4a in Resources */,

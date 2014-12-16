@@ -51,7 +51,7 @@ class PlayScene: SKScene {
     var highscores = [NSDictionary]()
     var nextStage = false
     var soundIndex = -1
-    var soundPath = ["0", "1", "2", "3"]
+    var soundPath = ["0", "1", "2", "3", "4", "5", "6", "7"]
     var soundTimer:NSTimer? = nil
     
     
@@ -372,7 +372,8 @@ class PlayScene: SKScene {
         if sound != nil {
             if sound!.volume > 0.05 {
                 sound!.volume -= 0.05
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
+                soundTimer =
+                    NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("changeSound"), userInfo: nil, repeats: false)
                 return
             }
         }
