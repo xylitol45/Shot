@@ -10,6 +10,12 @@ import SpriteKit
 
 class EnemyFactory {
     
+    class func EnemyMap() -> [[Int]] {
+        return  [
+         [1,10], [1,2],[3,4,5],[6,7],[8,9,10]
+        ]
+    }
+    
     class func initEnemy(scene:SKScene, stage:Int) {
 
         if (arc4random_uniform(6) == 0) {
@@ -19,29 +25,34 @@ class EnemyFactory {
         if arc4random_uniform(10) != 0 {
             return;
         }
-        
-        let _no = arc4random_uniform((stage % 9)+1)
 
+        let _map = EnemyMap()
+
+        let _mapSub = _map[(stage - 1) % _map.count]
+        let _mapNo = arc4random_uniform(UInt32(_mapSub.count))
+        let _no = _mapSub[Int(_mapNo)]
         
         switch(_no) {
-        case 0:
-            EnemyFactory.initEnemySprite(scene)
         case 1:
-            EnemyFactory.initEnemySprite2(scene)
+            EnemyFactory.initEnemySprite(scene)
         case 2:
-            EnemyFactory.initEnemySprite3(scene)
+            EnemyFactory.initEnemySprite2(scene)
         case 3:
-            EnemyFactory.initEnemySprite4(scene)
+            EnemyFactory.initEnemySprite3(scene)
         case 4:
-            EnemyFactory.initEnemySprite5(scene)
+            EnemyFactory.initEnemySprite4(scene)
         case 5:
-            EnemyFactory.initEnemySprite6(scene)
+            EnemyFactory.initEnemySprite5(scene)
         case 6:
-            EnemyFactory.initEnemySprite7(scene)
+            EnemyFactory.initEnemySprite6(scene)
         case 7:
-            EnemyFactory.initEnemySprite8(scene)
+            EnemyFactory.initEnemySprite7(scene)
         case 8:
+            EnemyFactory.initEnemySprite8(scene)
+        case 9:
             EnemyFactory.initEnemySprite9(scene)
+        case 10:
+            EnemyFactory.initEnemySprite10(scene)
         default:break;
         }
         
@@ -517,6 +528,61 @@ class EnemyFactory {
             ])
         )
         
+        scene.addChild(_sprite)
+    }
+    
+    // まる３つ
+    class func initEnemySprite10(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+//        
+        let _spriteCircle = SKShapeNode(circleOfRadius: 20)
+        _spriteCircle.fillColor = SKColor.whiteColor()
+        _spriteCircle.strokeColor = SKColor.blackColor()
+        let _spriteCircle2 = _spriteCircle.copy() as SKShapeNode
+        let _spriteCircle3 = _spriteCircle.copy() as SKShapeNode
+        
+        let _sprite = SKSpriteNode()
+        _spriteCircle.position = CGPointMake(0, 0)
+        _sprite.addChild(_spriteCircle)
+        _spriteCircle2.position = CGPointMake(40, 0)
+        _sprite.addChild(_spriteCircle2)
+        _spriteCircle3.position = CGPointMake(80, 0)
+        _sprite.addChild(_spriteCircle3)
+        
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 6
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
+        
+        
+        var x1:CGFloat = 0
+        var x2:CGFloat = CGRectGetMaxX(_frame) - 80
+        if arc4random_uniform(2) == 0 {
+            x1 = x2
+            x2 = 0
+        }
+        
+        _sprite.runAction(
+            SKAction.group([
+                SKAction.sequence([
+                    SKAction.moveToY(-20, duration: 2),
+                    SKAction.removeFromParent()
+                ]),
+                SKAction.repeatActionForever(
+                    SKAction.sequence([
+                        SKAction.moveToX(x1, duration: 0.5),
+                        SKAction.moveToX(x2, duration: 0.5)
+                    ])
+                )
+            ])
+        );
         scene.addChild(_sprite)
     }
 
