@@ -12,7 +12,7 @@ class EnemyFactory {
     
     class func EnemyMap() -> [[Int]] {
         return  [
-         [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
+         [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
         ]
     }
     
@@ -57,6 +57,10 @@ class EnemyFactory {
             EnemyFactory.initEnemySprite11(scene)
         case 12:
             EnemyFactory.initEnemySprite12(scene)
+        case 13:
+            EnemyFactory.initEnemySprite13(scene)
+        case 14:
+            EnemyFactory.initEnemySprite14(scene)
         default:break;
         }
         
@@ -155,8 +159,6 @@ class EnemyFactory {
         _sprite.runAction(SKAction.repeatActionForever(SKAction.sequence([
             _move!,
             SKAction.runBlock({
-                
-                
                 if _sprite.frame.origin.x < 0 || _sprite.frame.origin.x > CGRectGetMaxX(_frame)
                     ||  _sprite.frame.origin.y < 0 || _sprite.frame.origin.y > CGRectGetMaxY(_frame){
                         _sprite.removeFromParent()
@@ -346,11 +348,7 @@ class EnemyFactory {
                     SKAction.sequence(
                         [SKAction.scaleTo(10.0, duration:1),
                             
-//                            SKAction.runBlock({
-//                                EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
-//                            }),
-                            
-                            
+
                             SKAction.scaleTo(1.0, duration: 1)])
                 ),
                 SKAction.sequence([_moveDown, SKAction.removeFromParent()])
@@ -687,6 +685,117 @@ class EnemyFactory {
             ]))
         
         
+        scene.addChild(_sprite)
+    }
+    
+    // 急に方向転換
+    class func initEnemySprite13(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(40,0))
+        _path.addLineToPoint(CGPointMake(40,40))
+        _path.addLineToPoint(CGPointMake(0,40))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
+        
+
+        let _yy = arc4random_uniform(4) + 1
+        let _height = CGRectGetMaxY(_frame) * -1
+        
+        let _actions:[SKAction] = [
+            SKAction.moveByX(0, y: -1 * CGFloat(_yy) * 100, duration: Double(_yy) * 0.5),
+            SKAction.waitForDuration(0.5),
+            SKAction.runBlock({
+                if let _player = scene.childNodeWithName("player") {
+                    let _xx:CGFloat = (_player.position.x > _sprite.position.x) ? 200 : -200
+                    
+                    _sprite.runAction(
+                        SKAction.sequence([
+                            SKAction.moveByX(_xx, y: _height, duration: 0.8),
+                            SKAction.removeFromParent()
+                            ])
+                    )
+                } else {
+                    _sprite.runAction(
+                        SKAction.sequence([
+                            SKAction.moveByX(0, y: _height, duration: 0.8),
+                            SKAction.removeFromParent()
+                        ])
+                    )
+                }
+            })
+        ];
+        
+        _sprite.runAction(
+            SKAction.sequence(_actions)
+        )
+        scene.addChild(_sprite)
+    }
+    
+    // 追ってくる
+    class func initEnemySprite14(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(40,0))
+        _path.addLineToPoint(CGPointMake(40,40))
+        _path.addLineToPoint(CGPointMake(0,40))
+        _path.closePath()
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
+        
+        let _height = CGRectGetMaxY(_frame) * -1
+        
+        var _move:(()->Void)!
+        _move = {
+            if _sprite.frame.origin.x < -100 || _sprite.frame.origin.x > CGRectGetMaxX(_frame)+100
+                ||  _sprite.frame.origin.y < -100 || _sprite.frame.origin.y > CGRectGetMaxY(_frame)+100 {
+                    _sprite.removeFromParent()
+                return
+            }
+            if let _player = scene.childNodeWithName("player") {
+                let _xx:CGFloat = (_player.position.x > _sprite.position.x) ? 200 : -200
+                let _yy:CGFloat = (_player.position.y > _sprite.position.y) ? 200 : -200
+                _sprite.runAction(
+                    SKAction.sequence([
+                        SKAction.waitForDuration(0.5),
+                        SKAction.moveByX(_xx, y: _yy, duration: 0.8),
+                        SKAction.runBlock({_move()})
+                        ])
+                )
+            } else {
+            }
+        }
+        
+        _sprite.runAction(
+            SKAction.runBlock({_move()})
+        )
         scene.addChild(_sprite)
     }
 }
