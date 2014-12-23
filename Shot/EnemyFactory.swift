@@ -12,12 +12,12 @@ class EnemyFactory {
     
     class func EnemyMap() -> [[Int]] {
         return  [
-         [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
+            [15], [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
         ]
     }
     
     class func initEnemy(scene:SKScene, stage:Int) {
-
+        
         if (arc4random_uniform(8) == 0) {
             EnemyFactory.initNoDestroyEnemySprite(scene)
         }
@@ -25,9 +25,9 @@ class EnemyFactory {
         if arc4random_uniform(10) != 0 {
             return;
         }
-
+        
         let _map = EnemyMap()
-
+        
         let _mapSub = _map[(stage - 1) % _map.count]
         let _mapNo = arc4random_uniform(UInt32(_mapSub.count))
         let _no = _mapSub[Int(_mapNo)]
@@ -61,11 +61,13 @@ class EnemyFactory {
             EnemyFactory.initEnemySprite13(scene)
         case 14:
             EnemyFactory.initEnemySprite14(scene)
+        case 15:
+            EnemyFactory.initEnemySprite15(scene)
         default:break;
         }
         
     }
-
+    
     // MARK: 敵弾
     class func initNoDestroyEnemySprite(scene:SKScene) {
         
@@ -164,12 +166,12 @@ class EnemyFactory {
                         _sprite.removeFromParent()
                 }
             })
-        ])))
+            ])))
         
         scene.addChild(_sprite)
         
     }
-
+    
     // 四角
     class func initEnemySprite(scene:SKScene) {
         
@@ -198,8 +200,8 @@ class EnemyFactory {
         let _moveDown = SKAction.moveToY(-100, duration: 2)
         _sprite.runAction(
             SKAction.sequence([_moveDown, SKAction.removeFromParent()])
-            )
-            
+        )
+        
         
         scene.addChild(_sprite)
     }
@@ -243,7 +245,7 @@ class EnemyFactory {
         _path.addQuadCurveToPoint(CGPointMake(0, 40), controlPoint: CGPointMake(40, 20))
         _path.moveToPoint(CGPointMake(0, 0))
         _path.addQuadCurveToPoint(CGPointMake(0, 40), controlPoint: CGPointMake(-40, 20))
-
+        
         
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
@@ -291,7 +293,7 @@ class EnemyFactory {
         
         _sprite.position =
             CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
-
+        
         var _move:SKAction? = nil
         var _circle = CGPathCreateMutable()!
         
@@ -305,7 +307,7 @@ class EnemyFactory {
             CGPathAddArc(_circle, nil, 100, 0, 100, CGFloat(M_PI), CGFloat(M_PI_2), false);
             _move = SKAction.moveTo(CGPointMake(0, -40), duration: 1)
         }
-
+        
         _sprite.runAction(
             SKAction.sequence([
                 SKAction.moveToY(CGRectGetMaxY(_frame) / 2, duration: 1),
@@ -347,8 +349,6 @@ class EnemyFactory {
                 SKAction.repeatActionForever(
                     SKAction.sequence(
                         [SKAction.scaleTo(10.0, duration:1),
-                            
-
                             SKAction.scaleTo(1.0, duration: 1)])
                 ),
                 SKAction.sequence([_moveDown, SKAction.removeFromParent()])
@@ -437,7 +437,7 @@ class EnemyFactory {
             let _moveUp = SKAction.group([
                 SKAction.moveToY(CGRectGetMaxY(_frame)+40, duration: 1),
                 SKAction.moveByX(CGFloat(i) * 100, y: 0, duration: 1)
-            ])
+                ])
             
             _sprite.runAction(SKAction.sequence([_moveDown, _moveUp,SKAction.removeFromParent()]))
             
@@ -445,7 +445,7 @@ class EnemyFactory {
         }
         
     }
-
+    
     // 丸
     class func initEnemySprite8(scene:SKScene) {
         
@@ -484,7 +484,7 @@ class EnemyFactory {
                 SKAction.runBlock({
                     EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
                 })
-
+                
             )
         }
         _movePath.append(SKAction.moveToY(-100, duration: 1))
@@ -530,9 +530,9 @@ class EnemyFactory {
                         SKAction.runBlock({
                             EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
                         })
-                    ])
+                        ])
                 )
-            ])
+                ])
         )
         
         scene.addChild(_sprite)
@@ -543,7 +543,7 @@ class EnemyFactory {
         
         let _frame = scene.frame
         
-//        
+        //
         let _spriteCircle = SKShapeNode(circleOfRadius: 20)
         _spriteCircle.fillColor = SKColor.whiteColor()
         _spriteCircle.strokeColor = SKColor.blackColor()
@@ -581,18 +581,18 @@ class EnemyFactory {
                 SKAction.sequence([
                     SKAction.moveToY(-20, duration: 2),
                     SKAction.removeFromParent()
-                ]),
+                    ]),
                 SKAction.repeatActionForever(
                     SKAction.sequence([
                         SKAction.moveToX(x1, duration: 0.5),
                         SKAction.moveToX(x2, duration: 0.5)
-                    ])
+                        ])
                 )
-            ])
+                ])
         );
         scene.addChild(_sprite)
     }
-
+    
     
     // 5こ
     class func initEnemySprite11(scene:SKScene) {
@@ -623,7 +623,7 @@ class EnemyFactory {
             ]);
         
         var _x =
-            CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100))
+        CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100))
         
         let _ymap:[CGFloat] = [0, -40, -80, -40, 0]
         let _baseY = CGRectGetMaxY(_frame) + 40 * 3
@@ -712,7 +712,7 @@ class EnemyFactory {
         _sprite.position =
             CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
         
-
+        
         let _yy = arc4random_uniform(4) + 1
         let _height = CGRectGetMaxY(_frame) * -1
         
@@ -734,7 +734,7 @@ class EnemyFactory {
                         SKAction.sequence([
                             SKAction.moveByX(0, y: _height, duration: 0.8),
                             SKAction.removeFromParent()
-                        ])
+                            ])
                     )
                 }
             })
@@ -777,7 +777,7 @@ class EnemyFactory {
             if _sprite.frame.origin.x < -100 || _sprite.frame.origin.x > CGRectGetMaxX(_frame)+100
                 ||  _sprite.frame.origin.y < -100 || _sprite.frame.origin.y > CGRectGetMaxY(_frame)+100 {
                     _sprite.removeFromParent()
-                return
+                    return
             }
             if let _player = scene.childNodeWithName("player") {
                 let _xx:CGFloat = (_player.position.x > _sprite.position.x) ? 200 : -200
@@ -798,4 +798,41 @@ class EnemyFactory {
         )
         scene.addChild(_sprite)
     }
+    
+    // BOM
+    class func initEnemySprite15(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        let _path = UIBezierPath()
+        _path.addArcWithCenter(CGPointMake(0, 0), radius: 50, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
+        _path.moveToPoint(CGPointMake(0, 50))
+        _path.addLineToPoint(CGPointMake(0, -50))
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+50)
+        
+        let _yy:CGFloat = CGFloat(arc4random_uniform(UInt32(CGRectGetMidY(_frame))) + 200)
+        let _scaleTo = SKAction.scaleBy(20, duration: 1.0)
+        _scaleTo.timingMode = .EaseIn
+        _sprite.runAction(
+            SKAction.sequence([
+                SKAction.moveByX(0, y: _yy * -1, duration: Double(_yy) * 0.005),
+                SKAction.waitForDuration(0.8),
+                _scaleTo
+                ])
+        )
+        
+        scene.addChild(_sprite)
+    }
+    
 }
