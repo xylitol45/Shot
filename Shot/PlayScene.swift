@@ -253,7 +253,7 @@ class PlayScene: SKScene {
             
             if CGRectIntersectsRect(_enemyFrame, _playerFrame) {
                 
-                println(" player.frame \(_player!.frame)")
+                //println(" player.frame \(_player!.frame)")
                 
                 //                _player.strokeColor = SKColor.redColor()
                 //                let colorAction = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0 , duration: 1)
@@ -265,12 +265,13 @@ class PlayScene: SKScene {
                 self.zan += Int(Float(_ap) * Float(self.playerCollision ? 1.5 : 1))
                 //
                 //NSLog("zan2 %d ap %d", self.zan, _ap)
+
+                self.refreshScore()
                 
                 // 終了
                 if self.zan >= 100 {
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(_playerFrame), CGRectGetMidY(_playerFrame)), scale: 1.0)
                     _player!.removeFromParent()
-                    self.refreshScore()
                     
                     self.endGame()
                     
