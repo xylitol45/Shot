@@ -55,7 +55,6 @@
 		07B7341519F939A0006C8205 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341419F939A0006C8205 /* GameScene.sks */; };
 		07B7341719F939A0006C8205 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7341619F939A0006C8205 /* GameScene.swift */; };
 		07B7341919F939A0006C8205 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7341819F939A0006C8205 /* GameViewController.swift */; };
-		07B7341C19F939A0006C8205 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341A19F939A0006C8205 /* Main.storyboard */; };
 		07B7341E19F939A0006C8205 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341D19F939A0006C8205 /* Images.xcassets */; };
 		07B7342119F939A0006C8205 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341F19F939A0006C8205 /* LaunchScreen.xib */; };
 		07B7342D19F939A1006C8205 /* ShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7342C19F939A1006C8205 /* ShotTests.swift */; };
@@ -64,7 +63,6 @@
 		07B7343A19F93A43006C8205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7341219F939A0006C8205 /* AppDelegate.swift */; };
 		07B7343E19F93A43006C8205 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341D19F939A0006C8205 /* Images.xcassets */; };
 		07B7343F19F93A43006C8205 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341419F939A0006C8205 /* GameScene.sks */; };
-		07B7344019F93A43006C8205 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07B7341A19F939A0006C8205 /* Main.storyboard */; };
 		07B7344919F93A45006C8205 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B7344719F93A45006C8205 /* LaunchScreen.xib */; };
 		07BFCE3319FB5F5E00B0342A /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3219FB5F5E00B0342A /* SKButtonNode.swift */; };
 		07BFCE3419FB5F5E00B0342A /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFCE3219FB5F5E00B0342A /* SKButtonNode.swift */; };
@@ -119,7 +117,6 @@
 		07B7341419F939A0006C8205 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		07B7341619F939A0006C8205 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		07B7341819F939A0006C8205 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		07B7341B19F939A0006C8205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07B7341D19F939A0006C8205 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		07B7342019F939A0006C8205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		07B7342619F939A1006C8205 /* ShotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +192,6 @@
 				075312F01A2F674900EE7037 /* EnemyFactory.swift */,
 				07B7341819F939A0006C8205 /* GameViewController.swift */,
 				07B7341619F939A0006C8205 /* GameScene.swift */,
-				07B7341A19F939A0006C8205 /* Main.storyboard */,
 				07B7341D19F939A0006C8205 /* Images.xcassets */,
 				07B7341F19F939A0006C8205 /* LaunchScreen.xib */,
 				073B663619FA949200C09008 /* FirstScene.swift */,
@@ -383,7 +379,6 @@
 				0751B9D01A1CEF2E008472ED /* 6.m4a in Resources */,
 				071DE01319FEC25D0097DB51 /* 4.m4a in Resources */,
 				0799962C1A360033009985BA /* 7.m4a in Resources */,
-				07B7341C19F939A0006C8205 /* Main.storyboard in Resources */,
 				077043EF1A00F2550097B108 /* 2.m4a in Resources */,
 				0703253C1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
 				07D21DC21A4097100032E777 /* 1.m4a in Resources */,
@@ -426,7 +421,6 @@
 				073B664119FAB6D000C09008 /* spark.png in Resources */,
 				071DE00E19FEB81C0097DB51 /* 5.m4a in Resources */,
 				07B7343F19F93A43006C8205 /* GameScene.sks in Resources */,
-				07B7344019F93A43006C8205 /* Main.storyboard in Resources */,
 				0703253D1A0FC29D00557588 /* プロジェクト42 2.m4a in Resources */,
 				077043F01A00F2550097B108 /* 2.m4a in Resources */,
 				071DE00819FEB49D0097DB51 /* efg.m4a in Resources */,
@@ -496,14 +490,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		07B7341A19F939A0006C8205 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07B7341B19F939A0006C8205 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		07B7341F19F939A0006C8205 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

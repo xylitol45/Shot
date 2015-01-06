@@ -54,6 +54,8 @@ class PlayScene: SKScene {
     var soundPath = ["0", "1", "2", "3", "4", "5", "6", "7"]
     var soundTimer:NSTimer? = nil
     
+    let labelFontName = "HelveticaNeue-UltraLight"
+//    let labelFontName = "HelveticaNeue-Light"
     
     // MARK: クラスメソッド
     // 0.0-1.0
@@ -195,6 +197,7 @@ class PlayScene: SKScene {
                         
                         _y -= 100
                         let _label = SKLabelNode(text: "30% recovery")
+                        _label.fontName=labelFontName
                         _label.position = CGPointMake(CGRectGetMidX(frame), _y)
                         _label.fontColor = SKColor.blackColor()
                         _label.zPosition = 1000
@@ -341,6 +344,7 @@ class PlayScene: SKScene {
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
                     
                     let _scoreNode = SKLabelNode(text: "\(_score)")
+                    _scoreNode.fontName=self.labelFontName
                     _scoreNode.zPosition = 1000
                     _scoreNode.position =
                         CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame))
@@ -434,7 +438,6 @@ class PlayScene: SKScene {
             highscores = _array.mutableCopy() as [NSDictionary]
         }
         
-        
         // CGAffineTransformMakeTranslation()
         //_path2.bo
         // score
@@ -443,6 +446,7 @@ class PlayScene: SKScene {
         if _scoreNode == nil {
             _scoreNode = SKLabelNode(text: "0")
             _scoreNode!.name="score"
+            _scoreNode!.fontName=labelFontName
             _scoreNode!.position = CGPointMake(CGRectGetMidX(frame),  CGRectGetMaxY(self.frame)-50)
             _scoreNode!.fontColor=UIColor.blackColor()
             _scoreNode!.verticalAlignmentMode = .Bottom
@@ -456,6 +460,7 @@ class PlayScene: SKScene {
         if _zanNode == nil {
             _zanNode = SKLabelNode(text: "0%")
             _zanNode!.name="zan"
+            _zanNode!.fontName = labelFontName
             _zanNode!.position = CGPointMake(CGRectGetMaxX(frame)-50,  CGRectGetMaxY(self.frame)-50)
             _zanNode!.fontColor=SKColor.blackColor()
             _zanNode!.verticalAlignmentMode = .Bottom
@@ -510,6 +515,7 @@ class PlayScene: SKScene {
         
         let _titleNode = SKLabelNode(text:"Shot")
         _titleNode.name = "title"
+        _titleNode.fontName = labelFontName
         _titleNode.position = CGPointMake(CGRectGetMidX(frame), _y)
         _titleNode.fontColor = SKColor.blackColor()
         _titleNode.zPosition = 1000
@@ -524,17 +530,16 @@ class PlayScene: SKScene {
         _fmtJa.locale = NSLocale(localeIdentifier: "ja_JP")
         for _row in self.highscores {
             
-            println(_row["date"])
-            //            let _dateString = _row["date"] as NSDate!
-            
-            
             let _str = String(_index+1) + ". "  + String(_row["score"] as Int)
             let _scoreNode = SKLabelNode(text:_str)
+            _scoreNode.fontName = labelFontName
             _scoreNode.name = "title"
             _scoreNode.position = CGPointMake(CGRectGetMidX(frame) - 80, _y - CGFloat(_index) * 40)
             _scoreNode.fontColor = SKColor.blackColor()
             _scoreNode.zPosition = 1000
             _scoreNode.horizontalAlignmentMode = .Left
+            
+            println(_scoreNode.fontName)
             addChild(_scoreNode)
             _index++
             
@@ -607,6 +612,7 @@ class PlayScene: SKScene {
         
         let _node = SKLabelNode(text: "GAME OVER")
         _node.name = "gameover"
+        _node.fontName = labelFontName
         _node.position = CGPointMake(CGRectGetMidX(frame), _y)
         _node.fontColor = SKColor.blackColor()
         _node.zPosition = 1000

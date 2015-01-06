@@ -12,7 +12,8 @@ class EnemyFactory {
     
     class func EnemyMap() -> [[Int]] {
         return  [
-            [20], [19], [18], [17], [16], [15], [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
+            [11], [3], [2], [1],
+            [19], [20], [18], [17], [16], [15], [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
         ]
     }
     
@@ -118,7 +119,7 @@ class EnemyFactory {
                 CGPointMake(CGRectGetMaxX(_frame)+40, CGRectGetMaxY(_frame) - _y  )
         }
         
-        let _moveTo = SKAction.moveTo(CGPointMake(_playerX, -40), duration: 2)
+        let _moveTo = SKAction.moveTo(CGPointMake(_playerX, -40), duration: 2.5)
         
         _sprite.runAction(SKAction.sequence([_moveTo,SKAction.removeFromParent()]))
         
@@ -182,7 +183,7 @@ class EnemyFactory {
         
     }
     
-    // 四角
+    // 四角 簡単
     class func initEnemySprite(scene:SKScene) {
         
         let _frame = scene.frame
@@ -216,45 +217,68 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // 楕円
+    // ジグザグ 四角 簡単
     class func initEnemySprite2(scene:SKScene) {
         
         let _frame = scene.frame
         
-        let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(CGRectGetMaxY(_frame) / 2, 100))
+        let _path = UIBezierPath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(40,0))
+        _path.addLineToPoint(CGPointMake(40,40))
+        _path.addLineToPoint(CGPointMake(0,40))
+        _path.closePath()
+        _path.addLineToPoint(CGPointMake(40, 40))
+        _path.moveToPoint(CGPointMake(40, 0))
+        _path.addLineToPoint(CGPointMake(0, 40))
+        
+        let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
-        _sprite.userData!["hp"] = 20
-        _sprite.userData!["ap"] = 50
-        _sprite.userData!["score"] = 1000
+        _sprite.userData!["hp"] = 4
+        _sprite.userData!["ap"] = 25
+        _sprite.userData!["score"] = 100
         _sprite.fillColor = SKColor.whiteColor()
         _sprite.strokeColor = SKColor.blackColor()
         _sprite.name = "enemy"
         _sprite.zPosition = 100
         
-        let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))))
+        _sprite.position =
+            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
         
-        _sprite.position = CGPointMake(_x, CGRectGetMaxY(_frame) + 100)
+        var _xx:CGFloat = 1
+        if _sprite.position.x > CGRectGetMidX(_frame) {
+            _xx = -1
+        }
         
-        let _action = SKAction.group([
-            SKAction.repeatActionForever(SKAction.rotateByAngle(CGFloat(M_PI_2) * -1, duration: 5)),
-            SKAction.sequence([
-                SKAction.moveTo(CGPointMake(_x, -100), duration: 20),
-                SKAction.removeFromParent()])
-            ])
-        _sprite.runAction(_action)
+        var _yy = CGFloat(CGRectGetMaxY(_frame)) / 8
+        
+        var _actions:[SKAction] = []
+        
+        for _ in 0..<10 {
+            _actions.append(SKAction.moveByX(0, y: -1 * _yy, duration: 0.5))
+            _actions.append(SKAction.moveByX(_xx * 200, y: 0, duration: 0.5))
+            _xx *= -1
+        }
+        
+        _sprite.runAction(SKAction.sequence([
+            SKAction.sequence(_actions),
+            SKAction.removeFromParent()
+            ]))
+        
+        
         scene.addChild(_sprite)
     }
-    
-    // カーブ２つ
+
+    // カーブ２つ 横上へ
     class func initEnemySprite3(scene:SKScene) {
         
         let _frame = scene.frame
         
         let _path = UIBezierPath()
         _path.moveToPoint(CGPointMake(0, 0))
-        _path.addQuadCurveToPoint(CGPointMake(0, 40), controlPoint: CGPointMake(40, 20))
+        _path.addQuadCurveToPoint(CGPointMake(0, 20), controlPoint: CGPointMake(40, 40))
         _path.moveToPoint(CGPointMake(0, 0))
-        _path.addQuadCurveToPoint(CGPointMake(0, 40), controlPoint: CGPointMake(-40, 20))
+        _path.addQuadCurveToPoint(CGPointMake(0, 20), controlPoint: CGPointMake(-40, 40))
         
         
         let _sprite = SKShapeNode(path: _path.CGPath)
@@ -271,15 +295,15 @@ class EnemyFactory {
         
         _sprite.runAction(
             SKAction.sequence([
-                SKAction.moveToY(CGRectGetMidY(_frame) / 2, duration: 2),
+                SKAction.moveToY(CGRectGetMidY(_frame) / 2, duration: 1.5),
                 SKAction.moveTo(
-                    arc4random_uniform(2) == 0 ? CGPointMake(-100, CGRectGetMidY(_frame)) : CGPointMake(CGRectGetMaxX(_frame)+100, CGRectGetMidY(_frame)), duration:  1),
+                    arc4random_uniform(2) == 0 ? CGPointMake(-100, CGRectGetMidY(_frame)) : CGPointMake(CGRectGetMaxX(_frame)+100, CGRectGetMidY(_frame)), duration:  0.5),
                 SKAction.removeFromParent()]))
         
         scene.addChild(_sprite)
     }
     
-    // 三角２つ
+    // 三角２つ 回る
     class func initEnemySprite4(scene:SKScene) {
         
         let _frame = scene.frame
@@ -368,7 +392,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // 菱形
+    // 菱形 4点をぐるぐる回る
     class func initEnemySprite6(scene:SKScene) {
         
         let _frame = scene.frame
@@ -414,7 +438,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // ３つ
+    // ３つ 下まで行って上へ戻る
     class func initEnemySprite7(scene:SKScene) {
         
         let _frame = scene.frame
@@ -456,7 +480,7 @@ class EnemyFactory {
         
     }
     
-    // 丸
+    // 丸 ランダムに移動
     class func initEnemySprite8(scene:SKScene) {
         
         let _frame = scene.frame
@@ -505,7 +529,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // 長方形
+    // 長方形 下まで降りて誘導弾を出す
     class func initEnemySprite9(scene:SKScene) {
         
         let _frame = scene.frame
@@ -533,10 +557,10 @@ class EnemyFactory {
         let _moveDown = SKAction.moveToY(CGFloat(CGRectGetMaxY(_frame)) / 4, duration: 5)
         _sprite.runAction(
             SKAction.sequence([
-                SKAction.moveToY(10, duration: 5),
+                SKAction.moveToY(40, duration: 5),
                 SKAction.repeatActionForever(
                     SKAction.sequence([
-                        SKAction.waitForDuration(1),
+                        SKAction.waitForDuration(2),
                         SKAction.runBlock({
                             EnemyFactory.initNoDestroyEnemySprite2(scene, position: _sprite.frame.origin)
                         })
@@ -548,7 +572,7 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // まる３つ
+    // まる３つ 左右の壁で反射する
     class func initEnemySprite10(scene:SKScene) {
         
         let _frame = scene.frame
@@ -604,8 +628,12 @@ class EnemyFactory {
     }
     
     
-    // 5こ
+    // 5この矢
     class func initEnemySprite11(scene:SKScene) {
+
+//        if arc4random_uniform(2) != 0 {
+//            return
+//        }
         
         let _frame = scene.frame
         
@@ -628,7 +656,7 @@ class EnemyFactory {
         _sprite.zPosition = 100
         
         let _move = SKAction.sequence([
-            SKAction.moveByX(0, y: CGRectGetMaxY(_frame) * -2, duration:3),
+            SKAction.moveByX(0, y: CGRectGetMaxY(_frame) * -2, duration:2),
             SKAction.removeFromParent()
             ]);
         
@@ -645,61 +673,10 @@ class EnemyFactory {
             _spriteCopy.runAction(_move)
             scene.addChild(_spriteCopy)
         }
-        
     }
     
-    // ジグザグ
-    // 四角
+    // 四角だけど、急に方向転換して落ちてくる
     class func initEnemySprite12(scene:SKScene) {
-        
-        let _frame = scene.frame
-        
-        let _path = UIBezierPath()
-        _path.moveToPoint(CGPointMake(0, 0))
-        _path.addLineToPoint(CGPointMake(40,0))
-        _path.addLineToPoint(CGPointMake(40,40))
-        _path.addLineToPoint(CGPointMake(0,40))
-        _path.closePath()
-        
-        let _sprite = SKShapeNode(path: _path.CGPath)
-        _sprite.userData = [:]
-        _sprite.userData!["hp"] = 4
-        _sprite.userData!["ap"] = 25
-        _sprite.userData!["score"] = 100
-        _sprite.fillColor = SKColor.whiteColor()
-        _sprite.strokeColor = SKColor.blackColor()
-        _sprite.name = "enemy"
-        _sprite.zPosition = 100
-        
-        _sprite.position =
-            CGPointMake(CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))-100)), CGRectGetMaxY(_frame)+10)
-        
-        var _xx:CGFloat = 1
-        if _sprite.position.x > CGRectGetMaxX(_frame) {
-            _xx = -1
-        }
-        
-        var _yy = CGFloat(CGRectGetMaxY(_frame)) / 8
-        
-        var _actions:[SKAction] = []
-        
-        for _ in 0..<10 {
-            _actions.append(SKAction.moveByX(0, y: -1 * _yy, duration: 0.5))
-            _actions.append(SKAction.moveByX(_xx * 200, y: 0, duration: 0.5))
-            _xx *= -1
-        }
-        
-        _sprite.runAction(SKAction.sequence([
-            SKAction.sequence(_actions),
-            SKAction.removeFromParent()
-            ]))
-        
-        
-        scene.addChild(_sprite)
-    }
-    
-    // 急に方向転換
-    class func initEnemySprite13(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -756,8 +733,8 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // 追ってくる
-    class func initEnemySprite14(scene:SKScene) {
+    // 四角＋ダイア、追ってくる
+    class func initEnemySprite13(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -767,6 +744,11 @@ class EnemyFactory {
         _path.addLineToPoint(CGPointMake(40,40))
         _path.addLineToPoint(CGPointMake(0,40))
         _path.closePath()
+        _path.moveToPoint(CGPointMake(20, 0))
+        _path.addLineToPoint(CGPointMake(40, 20))
+        _path.addLineToPoint(CGPointMake(20, 40))
+        _path.addLineToPoint(CGPointMake(0, 20))
+        _path.addLineToPoint(CGPointMake(20, 0))
         
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
@@ -809,8 +791,8 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // BOM
-    class func initEnemySprite15(scene:SKScene) {
+    // 割れた円 拡大する
+    class func initEnemySprite14(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -845,8 +827,8 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // BOM
-    class func initEnemySprite16(scene:SKScene) {
+    // 三等分された四角が３つ 高速で降りてくる
+    class func initEnemySprite15(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -906,8 +888,8 @@ class EnemyFactory {
     }
 
 
-    // 四散
-    class func initEnemySprite17(scene:SKScene) {
+    // 四角が４つ落ちてくる 四散する
+    class func initEnemySprite16(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -980,8 +962,8 @@ class EnemyFactory {
 
     }
     
-    // ランダムに縦横
-    class func initEnemySprite18(scene:SKScene) {
+    // 高速で落ちてきた後、ランダムに縦横
+    class func initEnemySprite17(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -991,6 +973,13 @@ class EnemyFactory {
         _path.addLineToPoint(CGPointMake(40,40))
         _path.addLineToPoint(CGPointMake(0,40))
         _path.closePath()
+        _path.moveToPoint(CGPointMake(0, 0))
+        _path.addLineToPoint(CGPointMake(20,40))
+        _path.addLineToPoint(CGPointMake(40,0))
+        _path.moveToPoint(CGPointMake(0, 40))
+        _path.addLineToPoint(CGPointMake(20,0))
+        _path.addLineToPoint(CGPointMake(40,40))
+        
         
         let _sprite = SKShapeNode(path: _path.CGPath)
         _sprite.userData = [:]
@@ -1038,8 +1027,8 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
 
-    // 横から出てくる
-    class func initEnemySprite19(scene:SKScene) {
+    // 横から出てくる楕円
+    class func initEnemySprite18(scene:SKScene) {
         
         let _frame = scene.frame
         
@@ -1076,8 +1065,12 @@ class EnemyFactory {
         scene.addChild(_sprite)
     }
     
-    // 上からたくさん
-    class func initEnemySprite20(scene:SKScene) {
+    // 上からたくさん四角が降ってくる
+    class func initEnemySprite19(scene:SKScene) {
+        
+        if arc4random_uniform(2) != 0 {
+            return
+        }
         
         let _frame = scene.frame
         let _w = CGRectGetMaxX(_frame) / 10
@@ -1113,6 +1106,35 @@ class EnemyFactory {
                 ]))
             scene.addChild(_spriteSub)
         }
+    }
+    
+    // 回る大きな楕円
+    class func initEnemySprite20(scene:SKScene) {
+        
+        let _frame = scene.frame
+        
+        let _sprite = SKShapeNode(ellipseOfSize: CGSizeMake(CGRectGetMaxY(_frame) / 2, 100))
+        _sprite.userData = [:]
+        _sprite.userData!["hp"] = 20
+        _sprite.userData!["ap"] = 50
+        _sprite.userData!["score"] = 1000
+        _sprite.fillColor = SKColor.whiteColor()
+        _sprite.strokeColor = SKColor.blackColor()
+        _sprite.name = "enemy"
+        _sprite.zPosition = 100
+        
+        let _x = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(_frame))))
+        
+        _sprite.position = CGPointMake(_x, CGRectGetMaxY(_frame) + 100)
+        
+        let _action = SKAction.group([
+            SKAction.repeatActionForever(SKAction.rotateByAngle(CGFloat(M_PI_2) * -1, duration: 5)),
+            SKAction.sequence([
+                SKAction.moveTo(CGPointMake(_x, -100), duration: 20),
+                SKAction.removeFromParent()])
+            ])
+        _sprite.runAction(_action)
+        scene.addChild(_sprite)
     }
 
     
