@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
         println(self.view.bounds.size)
         
         // このサイズはiPhone6
-        let scene = PlayScene(size:CGSizeMake(375, 667))
+        let scene = GameScene(size:CGSizeMake(375, 667))
         scene.scaleMode = .AspectFit
         
 //        let scene = PlayScene(size: self.view.bounds.size)

@@ -12,7 +12,9 @@ class EnemyFactory {
     
     class func EnemyMap() -> [[Int]] {
         return  [
-            [11], [3], [2], [1],
+            [1],[2],[3],[4],[5],[6],[7],[8],[9],[10],
+            [11],[12],[13],[14],[15],[16],[17],[18],[19],[20],
+            [11],
             [19], [20], [18], [17], [16], [15], [14], [13], [12], [3], [11], [1,4,10], [1,2],[3,4,5],[6,7],[8,9,10]
         ]
     }
@@ -91,7 +93,7 @@ class EnemyFactory {
         
         let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 8, 8))
         _sprite.userData = [:]
-        _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
+        _sprite.userData!["hp"] = GameScene.noDestoroyHp()
         _sprite.userData!["ap"] = 10
         _sprite.userData!["score"] = 0
         _sprite.fillColor = SKColor.whiteColor()
@@ -160,7 +162,7 @@ class EnemyFactory {
         
         let _sprite = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 8, 8))
         _sprite.userData = [:]
-        _sprite.userData!["hp"] = PlayScene.noDestoroyHp()
+        _sprite.userData!["hp"] = GameScene.noDestoroyHp()
         _sprite.userData!["ap"] = 10
         _sprite.userData!["score"] = 0
         _sprite.fillColor = SKColor.whiteColor()
@@ -190,9 +192,9 @@ class EnemyFactory {
         
         let _path = UIBezierPath()
         _path.moveToPoint(CGPointMake(0, 0))
-        _path.addLineToPoint(CGPointMake(40,0))
-        _path.addLineToPoint(CGPointMake(40,40))
-        _path.addLineToPoint(CGPointMake(0,40))
+        _path.addLineToPoint(CGPointMake(80,0))
+        _path.addLineToPoint(CGPointMake(80,80))
+        _path.addLineToPoint(CGPointMake(0,80))
         _path.closePath()
         
         let _sprite = SKShapeNode(path: _path.CGPath)
