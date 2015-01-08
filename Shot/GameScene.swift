@@ -273,7 +273,7 @@ class GameScene: SKScene {
                 self.refreshScore()
                 
                 // 終了
-                if self.zan >= 100 {
+                if self.zan >= 3000 {
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(_playerFrame), CGRectGetMidY(_playerFrame)), scale: 1.0)
                     _player!.removeFromParent()
                     
