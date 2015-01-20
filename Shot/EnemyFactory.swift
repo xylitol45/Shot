@@ -30,7 +30,7 @@ class EnemyFactory {
                 }
             }
             
-            println(newMap)
+//            println(newMap)
             
             Static.map.append(newMap)
         }

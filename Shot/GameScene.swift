@@ -212,12 +212,11 @@ class GameScene: SKScene {
                 }
                 
                 
-                if let _node = childNodeWithName("phase") as SKLabelNode! {
-                    _node.text = String(phase)
-                }
+                //                if let _node = childNodeWithName("phase") as SKLabelNode! {
+                //                    _node.text = String(phase)
+                //                }
                 
                 EnemyFactory.initEnemy(self, stage: stage)
-                
                 
                 initMissileSprite()
                 
@@ -273,7 +272,7 @@ class GameScene: SKScene {
                 self.refreshScore()
                 
                 // 終了
-                if self.zan >= 1000 {
+                if self.zan >= 100 {
                     self.initSparkSprite(CGPointMake(CGRectGetMidX(_playerFrame), CGRectGetMidY(_playerFrame)), scale: 1.0)
                     _player!.removeFromParent()
                     
@@ -342,7 +341,7 @@ class GameScene: SKScene {
                     let _score = node.userData!["score"] as Int
                     self.score += _score
                     self.refreshScore()
-                    self.initSparkSprite(CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
+                    self.initSparkSprite(CGPointMake(CGRectGetMidX(_enemyFrame), CGRectGetMidY(_enemyFrame)))
                     
                     let _scoreNode = SKLabelNode(text: "\(_score)")
                     _scoreNode.fontName=self.labelFontName
@@ -429,7 +428,7 @@ class GameScene: SKScene {
         _fmt.dateFormat="yyyy-MM-dd HH:mm:ss"
         _fmt.locale=NSLocale(localeIdentifier: "ja_JP")
         
-        NSLog("[%@]", _fmt.stringFromDate(NSDate()))
+//        NSLog("[%@]", _fmt.stringFromDate(NSDate()))
         
         
         self.backgroundColor = UIColor.whiteColor()
@@ -471,17 +470,17 @@ class GameScene: SKScene {
         }
         
         // phase
-        var _phaseNode = childNodeWithName("phase") as SKLabelNode?
-        if _phaseNode == nil {
-            _phaseNode = SKLabelNode(text: "")
-            _phaseNode!.name = "phase"
-            _phaseNode!.position = CGPointMake(0,0)
-            _phaseNode!.fontColor=SKColor.blackColor()
-            _phaseNode!.verticalAlignmentMode = .Bottom
-            _phaseNode!.horizontalAlignmentMode = .Left
-            _phaseNode!.zPosition=1000
-            addChild(_phaseNode!)
-        }
+        //        var _phaseNode = childNodeWithName("phase") as SKLabelNode?
+        //        if _phaseNode == nil {
+        //            _phaseNode = SKLabelNode(text: "")
+        //            _phaseNode!.name = "phase"
+        //            _phaseNode!.position = CGPointMake(0,0)
+        //            _phaseNode!.fontColor=SKColor.blackColor()
+        //            _phaseNode!.verticalAlignmentMode = .Bottom
+        //            _phaseNode!.horizontalAlignmentMode = .Left
+        //            _phaseNode!.zPosition=1000
+        //            addChild(_phaseNode!)
+        //        }
         
         // highscores read
         if let _highscores = NSUserDefaults.standardUserDefaults().objectForKey("highscores") as NSArray! {
@@ -540,7 +539,7 @@ class GameScene: SKScene {
             _scoreNode.zPosition = 1000
             _scoreNode.horizontalAlignmentMode = .Left
             
-            println(_scoreNode.fontName)
+//            println(_scoreNode.fontName)
             addChild(_scoreNode)
             _index++
             
@@ -638,20 +637,20 @@ class GameScene: SKScene {
     
     #if false
     func readData() {
-        
-        let _path = NSBundle.mainBundle().pathForResource("data", ofType: "json")!
-        let _handle = NSFileHandle(forReadingAtPath: _path)!
-        let _data:NSData! = _handle.readDataToEndOfFile()
-        
-        let _json =
-        NSJSONSerialization.JSONObjectWithData(_data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary!
-        
-        let _enemy = _json.objectForKey("enemy") as [NSDictionary]!
-        
-        for _row in _enemy {
-            println(_row.objectForKey("ap"))
-            println(_row.objectForKey("hp"))
-        }
+    
+    let _path = NSBundle.mainBundle().pathForResource("data", ofType: "json")!
+    let _handle = NSFileHandle(forReadingAtPath: _path)!
+    let _data:NSData! = _handle.readDataToEndOfFile()
+    
+    let _json =
+    NSJSONSerialization.JSONObjectWithData(_data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary!
+    
+    let _enemy = _json.objectForKey("enemy") as [NSDictionary]!
+    
+    for _row in _enemy {
+    println(_row.objectForKey("ap"))
+    println(_row.objectForKey("hp"))
+    }
     }
     #endif
     

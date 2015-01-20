@@ -39,12 +39,13 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         let skView:SKView = self.view as SKView
+
+        skView.ignoresSiblingOrder = true
+//        skView.showsDrawCount = true
+//        skView.showsNodeCount = true
+//        skView.showsFPS=true
         
-        skView.showsDrawCount = true
-        skView.showsNodeCount = true
-        skView.showsFPS=true
-        
-        println(self.view.bounds.size)
+//        println(self.view.bounds.size)
         
         // このサイズはiPhone6
         let scene = GameScene(size:CGSizeMake(375, 667))
@@ -54,24 +55,6 @@ class GameViewController: UIViewController {
         
         skView.presentScene(scene)
         
-        #if false
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            // Configure the view.
-            let skView = self.view as SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            scene.size = skView.frame.size;
-            
-            skView.presentScene(scene)
-        }
-        #endif
         
     }
 
