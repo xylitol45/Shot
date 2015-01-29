@@ -113,7 +113,6 @@
 		07B7342B19F939A1006C8205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07B7342C19F939A1006C8205 /* ShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotTests.swift; sourceTree = "<group>"; };
 		07B7344419F93A43006C8205 /* Shot-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07B7344619F93A43006C8205 /* Shot copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shot copy-Info.plist"; path = "/Users/yoshimura/Documents/Shot/Shot copy-Info.plist"; sourceTree = "<absolute>"; };
 		07B7344819F93A45006C8205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Resources-iPad/Shot/Base.lproj/LaunchScreen.xib"; sourceTree = "<group>"; };
 		07D21DC11A4097100032E777 /* 6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 6.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,7 +148,6 @@
 				07B7344519F93A43006C8205 /* Resources-iPad */,
 				07B7340F19F939A0006C8205 /* Shot */,
 				07B7342919F939A1006C8205 /* ShotTests */,
-				07B7344619F93A43006C8205 /* Shot copy-Info.plist */,
 				07E4572019FD724C005AB39D /* Frameworks */,
 				07B7340E19F939A0006C8205 /* Products */,
 			);
